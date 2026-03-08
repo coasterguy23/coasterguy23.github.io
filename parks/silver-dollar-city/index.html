@@ -4,27 +4,58 @@
 <title>Silver Dollar City</title>
 <style>
 body {
-    background-color: #FF4500;
+    background-color: #121212;
     color: #fff;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     margin: 40px;
 }
 h1 { color: #1E90FF; text-align: center; }
-h2 { color: #87CEFA; }
+h2 { color: #87CEFA; text-align: center; }
+
+/* Shared table settings */
+
 table {
-    width: 70%;
     margin: 20px auto;
     border-collapse: collapse;
     table-layout: fixed;
 }
-th, td {
+
+/* SUMMARY TABLE */
+
+.summary-table {
+    width: 70%;
+}
+
+.summary-table th {
+    background-color: #FF4500;
     border: 1px solid #fff;
     padding: 12px;
-    text-align: center;
 }
-th { background-color: ##FF4500; }
-.summary-table th { background-color: ##FF4500; }
-.summary-table td { border: 1px solid #fff; background-color: transparent; }
+
+.summary-table td {
+    border: 1px solid #fff;
+    padding: 12px;
+    background-color: #121212;
+}
+
+/* COASTER TABLE */
+
+.coaster-table {
+    width: 70%;
+}
+
+.coaster-table th {
+    background-color: #1E90FF;
+    border: 1px solid #fff;
+    padding: 12px;
+}
+
+.coaster-table td {
+    border: 1px solid #fff;
+    padding: 12px;
+    background-color: #121212;
+}
+
 a.back-link {
     display: block;
     text-align: center;
@@ -68,7 +99,7 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 
 <h2>Coaster Breakdown</h2>
 
-<table>
+<table class="coaster-table">
 <tr><th>Coaster Name</th><th>World Rank</th><th>Status</th><th>Score</th></tr>
 <tr style="background-color:#1C1C1C"><td>Outlaw Run</td><td>43</td><td>Success</td><td>8.15</td></tr>
 <tr style="background-color:#1C1C1C"><td>Time Traveler</td><td>54</td><td>Success</td><td>7.72</td></tr>
