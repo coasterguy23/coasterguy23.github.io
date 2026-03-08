@@ -12,7 +12,7 @@
 </tr>
 
 <tr>
-<td><a href="parks/cedarpoint.html">Cedar Point</a></td>
+<td><a href="parks/cedar-point.html">Cedar Point</a></td>
 <td>95.1</td>
 </tr>
 
