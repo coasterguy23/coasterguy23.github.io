@@ -1,4 +1,3 @@
-# coasterguy23.github.io
 <h1>CoasterGuy23 Park Rankings</h1>
 
 <table>
