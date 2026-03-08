@@ -7,7 +7,7 @@
 </tr>
 
 <tr>
-<td><a href="parks/hersheypark.md">Hersheypark</a></td>
+<td><a href="parks/hersheypark.html">Hersheypark</a></td>
 <td>92.3</td>
 </tr>
 
