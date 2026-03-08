@@ -8,12 +8,17 @@
 
 <tr>
 <td><a href="parks/hersheypark.html">Hersheypark</a></td>
-<td>92.3</td>
+<td>44.12</td>
 </tr>
 
 <tr>
 <td><a href="parks/cedar-point.html">Cedar Point</a></td>
-<td>95.1</td>
+<td>62.26</td>
+</tr>
+
+<tr>
+<td><a href="parks/six-flags-magic-mountain.html">Kings Island</a></td>
+<td>49.28</td>
 </tr>
 
 </table>
