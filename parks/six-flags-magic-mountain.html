@@ -1,7 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Six Flags Magic Mountain</title>
+    <title>Six Flags Magic Mountain</title>
+    <style>
+        /* GENERAL PAGE STYLING */
+        body {
+            background-color: #121212; /* dark background */
+            color: #ffffff; /* white text */
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* modern font */
+            margin: 40px;
+        }
+
+        h1 {
+            color: #1E90FF; /* bright blue header */
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: #87CEFA; /* lighter blue for subheaders */
+            margin-top: 30px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        a {
+            color: #1E90FF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* TABLE STYLING */
+        table {
+            width: 60%; /* adjust width of table */
+            margin: 20px auto; /* center table */
+            border-collapse: collapse; /* clean borders */
+            table-layout: fixed; /* lets column widths stick */
+        }
+
+        th, td {
+            border: 1px solid #555555;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1E90FF;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            background-color: #1C1C1C;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #2A2A2A; /* alternating row color */
+        }
+
+        /* OPTIONAL: Rounded table corners */
+        table {
+            border-radius: 8px;
+            overflow: hidden; /* makes rounded corners work */
+        }
+
+        /* BUTTON-LIKE BACK LINK */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px 20px;
+            border: 1px solid #1E90FF;
+            border-radius: 5px;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-link:hover {
+            background-color: #1E90FF;
+            color: #fff;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -12,7 +102,7 @@
 
 <h2>Coaster Breakdown</h2>
 
-<table border="1">
+<table>
 <tr>
 <th>Coaster</th>
 <th>Score</th>
@@ -35,7 +125,7 @@
 
 </table>
 
-<a href="../index.html">Back to Rankings</a>
+<a href="../index.html" class="back-link">Back to Rankings</a>
 
 </body>
 </html>
