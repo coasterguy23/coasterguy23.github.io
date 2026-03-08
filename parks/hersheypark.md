@@ -1,12 +1,43 @@
-<h1>CoasterGuy23 Park Rankings</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hersheypark</title>
+</head>
 
-<table>
+<body>
+
+<h1>Hersheypark</h1>
+
+<p>Total Park Score: 92.3</p>
+
+<h2>Coaster Breakdown</h2>
+
+<table border="1">
 <tr>
-<th>Park</th>
+<th>Coaster</th>
 <th>Score</th>
 </tr>
 
 <tr>
 <td>Skyrush</td>
-<td>27</td>
+<td>9.8</td>
 </tr>
+
+<tr>
+<td>Wildcat's Revenge</td>
+<td>9.6</td>
+</tr>
+
+<tr>
+<td>Candymonium</td>
+<td>8.9</td>
+</tr>
+
+</table>
+
+<br>
+
+<a href="../index.html">Back to Rankings</a>
+
+</body>
+</html>
