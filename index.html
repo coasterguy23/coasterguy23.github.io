@@ -3,6 +3,21 @@
 <head>
 <title>CoasterGuy23 Park Rankings</title>
 <style>
+
+.rank {
+    width: 10%;
+    font-weight:bold;
+}
+
+.score {
+    width: 10%;
+}
+
+.park {
+    width: 80%;
+    text-align: left;
+}
+
 body {
     background-color: #121212;
     color: #fff;
@@ -21,10 +36,8 @@ th, td {
     padding: 12px;
     text-align: center;
 }
-th {
-    background-color: #1E90FF;
-}
-tr:nth-child(even) td { background-color: #2A2A2A; }
+th { background-color: #1E90FF; }
+tr:nth-child(even) td { background-color: #121212; }
 td a {
     color: #1E90FF;
     text-decoration: none;
@@ -38,103 +51,103 @@ td a:hover { text-decoration: underline; }
 <h1>CoasterGuy23 Park Rankings</h1>
 
 <table>
-<tr><th>Park</th><th>Total Score</th></tr>
-<tr><td><a href="parks/cedar-point/">Cedar Point</a></td><td>62.26</td></tr>
-<tr><td><a href="parks/six-flags-magic-mountain/">Six Flags Magic Mountain</a></td><td>49.28</td></tr>
-<tr><td><a href="parks/hersheypark/">Hersheypark</a></td><td>44.12</td></tr>
-<tr><td><a href="parks/kings-island/">Kings Island</a></td><td>38.59</td></tr>
-<tr><td><a href="parks/canada's-wonderland/">Canada's Wonderland</a></td><td>36.69</td></tr>
-<tr><td><a href="parks/energylandia/">Energylandia</a></td><td>34.42</td></tr>
-<tr><td><a href="parks/six-flags-great-adventure/">Six Flags Great Adventure</a></td><td>34.15</td></tr>
-<tr><td><a href="parks/six-flags-great-america/">Six Flags Great America</a></td><td>33.85</td></tr>
-<tr><td><a href="parks/six-flags-qiddiya-city/">Six Flags Qiddiya City</a></td><td>33.78</td></tr>
-<tr><td><a href="parks/busch-gardens-tampa/">Busch Gardens Tampa</a></td><td>33.14</td></tr>
-<tr><td><a href="parks/busch-gardens-williamsburg/">Busch Gardens Williamsburg</a></td><td>32.96</td></tr>
-<tr><td><a href="parks/europa-park/">Europa Park</a></td><td>32.35</td></tr>
-<tr><td><a href="parks/kings-dominion/">Kings Dominion</a></td><td>30.93</td></tr>
-<tr><td><a href="parks/phantasialand/">Phantasialand</a></td><td>30.19</td></tr>
-<tr><td><a href="parks/carowinds/">Carowinds</a></td><td>30.16</td></tr>
-<tr><td><a href="parks/six-flags-fiesta-texas/">Six Flags Fiesta Texas</a></td><td>27.06</td></tr>
-<tr><td><a href="parks/walibi-holland/">Walibi Holland</a></td><td>26.02</td></tr>
-<tr><td><a href="parks/dollywood/">Dollywood</a></td><td>25.89</td></tr>
-<tr><td><a href="parks/seaworld-orlando/">SeaWorld Orlando</a></td><td>25.28</td></tr>
-<tr><td><a href="parks/alton-towers/">Alton Towers</a></td><td>25.00</td></tr>
-<tr><td><a href="parks/six-flags-over-georgia/">Six Flags Over Georgia</a></td><td>24.86</td></tr>
-<tr><td><a href="parks/nagashima-spa-land/">Nagashima Spa Land</a></td><td>24.73</td></tr>
-<tr><td><a href="parks/silver-dollar-city/">Silver Dollar City</a></td><td>24.24</td></tr>
-<tr><td><a href="parks/thorpe-park/">Thorpe Park</a></td><td>23.76</td></tr>
-<tr><td><a href="parks/universal-epic-universe/">Universal Epic Universe</a></td><td>23.55</td></tr>
-<tr><td><a href="parks/parque-warner-madrid/">Parque Warner Madrid</a></td><td>23.37</td></tr>
-<tr><td><a href="parks/liseberg/">Liseberg</a></td><td>23.35</td></tr>
-<tr><td><a href="parks/knott's-berry-farm/">Knott's Berry Farm</a></td><td>22.59</td></tr>
-<tr><td><a href="parks/universal-islands-of-adventure/">Universal Islands of Adventure</a></td><td>22.40</td></tr>
-<tr><td><a href="parks/six-flags-new-england/">Six Flags New England</a></td><td>21.96</td></tr>
-<tr><td><a href="parks/parc-astérix/">Parc Astérix</a></td><td>21.93</td></tr>
-<tr><td><a href="parks/ferrari-world-abu-dhabi/">Ferrari World Abu Dhabi</a></td><td>21.43</td></tr>
-<tr><td><a href="parks/walibi-belgium/">Walibi Belgium</a></td><td>20.85</td></tr>
-<tr><td><a href="parks/six-flags-over-texas/">Six Flags Over Texas</a></td><td>20.77</td></tr>
-<tr><td><a href="parks/fuji-q-highland/">Fuji-Q Highland</a></td><td>19.55</td></tr>
-<tr><td><a href="parks/kennywood/">Kennywood</a></td><td>19.32</td></tr>
-<tr><td><a href="parks/mirabilandia/">Mirabilandia</a></td><td>19.32</td></tr>
-<tr><td><a href="parks/holiday-world/">Holiday World</a></td><td>19.04</td></tr>
-<tr><td><a href="parks/california's-great-america/">California's Great America</a></td><td>19.02</td></tr>
-<tr><td><a href="parks/portaventura-park/">PortAventura Park</a></td><td>17.62</td></tr>
-<tr><td><a href="parks/kentucky-kingdom/">Kentucky Kingdom</a></td><td>17.15</td></tr>
-<tr><td><a href="parks/heide-park-resort/">Heide Park Resort</a></td><td>17.11</td></tr>
-<tr><td><a href="parks/plopsaland-belgium/">Plopsaland Belgium</a></td><td>16.76</td></tr>
-<tr><td><a href="parks/universal-studios-japan/">Universal Studios Japan</a></td><td>16.36</td></tr>
-<tr><td><a href="parks/six-flags-discovery-kingdom/">Six Flags Discovery Kingdom</a></td><td>15.98</td></tr>
-<tr><td><a href="parks/hansa-park/">Hansa-Park</a></td><td>15.91</td></tr>
-<tr><td><a href="parks/six-flags-mexico/">Six Flags Mexico</a></td><td>15.27</td></tr>
-<tr><td><a href="parks/linnanmäki/">Linnanmäki</a></td><td>15.16</td></tr>
-<tr><td><a href="parks/efteling/">Efteling</a></td><td>14.50</td></tr>
-<tr><td><a href="parks/djurs-sommerland/">Djurs Sommerland</a></td><td>14.23</td></tr>
-<tr><td><a href="parks/fårup-sommerland/">Fårup Sommerland</a></td><td>14.23</td></tr>
-<tr><td><a href="parks/six-flags-st-louis/">Six Flags St Louis</a></td><td>14.10</td></tr>
-<tr><td><a href="parks/knoebels/">Knoebels</a></td><td>13.90</td></tr>
-<tr><td><a href="parks/lagoon/">Lagoon</a></td><td>13.82</td></tr>
-<tr><td><a href="parks/walibi-rhône-alpes/">Walibi Rhône-Alpes</a></td><td>13.80</td></tr>
-<tr><td><a href="parks/warner-bros.-movie-world/">Warner Bros. Movie World</a></td><td>13.78</td></tr>
-<tr><td><a href="parks/pleasure-beach-resort/">Pleasure Beach Resort</a></td><td>13.74</td></tr>
-<tr><td><a href="parks/dorney-park/">Dorney Park</a></td><td>13.71</td></tr>
-<tr><td><a href="parks/erlebnispark-tripsdrill/">Erlebnispark Tripsdrill</a></td><td>12.79</td></tr>
-<tr><td><a href="parks/worlds-of-fun/">Worlds of Fun</a></td><td>12.78</td></tr>
-<tr><td><a href="parks/powerpark/">PowerPark</a></td><td>12.39</td></tr>
-<tr><td><a href="parks/nanchang-sunac-land/">Nanchang Sunac Land</a></td><td>12.30</td></tr>
-<tr><td><a href="parks/seaworld-san-antonio/">SeaWorld San Antonio</a></td><td>11.36</td></tr>
-<tr><td><a href="parks/motiongate/">Motiongate</a></td><td>11.34</td></tr>
-<tr><td><a href="parks/plopsaland-deutschland/">Plopsaland Deutschland</a></td><td>11.17</td></tr>
-<tr><td><a href="parks/emerald-park/">Emerald Park</a></td><td>11.03</td></tr>
-<tr><td><a href="parks/wiener-prater/">Wiener Prater</a></td><td>10.79</td></tr>
-<tr><td><a href="parks/la-ronde/">La Ronde</a></td><td>10.29</td></tr>
-<tr><td><a href="parks/gardaland/">Gardaland</a></td><td>10.26</td></tr>
-<tr><td><a href="parks/fun-spot-america-atlanta/">Fun Spot America Atlanta</a></td><td>10.25</td></tr>
-<tr><td><a href="parks/kolmården/">Kolmården</a></td><td>10.15</td></tr>
-<tr><td><a href="parks/everland/">Everland</a></td><td>9.94</td></tr>
-<tr><td><a href="parks/freizeitpark-plohn/">Freizeitpark Plohn</a></td><td>9.60</td></tr>
-<tr><td><a href="parks/valleyfair!/">Valleyfair!</a></td><td>9.47</td></tr>
-<tr><td><a href="parks/silverwood-theme-park/">Silverwood Theme Park</a></td><td>9.10</td></tr>
-<tr><td><a href="parks/movie-park-germany/">Movie Park Germany</a></td><td>9.09</td></tr>
-<tr><td><a href="parks/adventureland-iowa/">Adventureland Iowa</a></td><td>9.00</td></tr>
-<tr><td><a href="parks/legendia/">Legendia</a></td><td>8.54</td></tr>
-<tr><td><a href="parks/bobbejaanland/">Bobbejaanland</a></td><td>8.38</td></tr>
-<tr><td><a href="parks/six-flags-darien-lake/">Six Flags Darien Lake</a></td><td>8.15</td></tr>
-<tr><td><a href="parks/tusenfryd/">TusenFryd</a></td><td>8.06</td></tr>
-<tr><td><a href="parks/nigloland/">Nigloland</a></td><td>7.96</td></tr>
-<tr><td><a href="parks/michigan's-adventure/">Michigan's Adventure</a></td><td>7.77</td></tr>
-<tr><td><a href="parks/gröna-lund/">Gröna Lund</a></td><td>7.73</td></tr>
-<tr><td><a href="parks/happy-valley-beijing/">Happy Valley Beijing</a></td><td>7.57</td></tr>
-<tr><td><a href="parks/seaworld-san-diego/">SeaWorld San Diego</a></td><td>7.29</td></tr>
-<tr><td><a href="parks/universal-studios-florida/">Universal Studios Florida</a></td><td>6.98</td></tr>
-<tr><td><a href="parks/indiana-beach/">Indiana Beach</a></td><td>6.71</td></tr>
-<tr><td><a href="parks/greenland/">Greenland</a></td><td>6.65</td></tr>
-<tr><td><a href="parks/flamingo-land/">Flamingo Land</a></td><td>5.94</td></tr>
-<tr><td><a href="parks/morey's-piers/">Morey's Piers</a></td><td>4.88</td></tr>
-<tr><td><a href="parks/elitch-gardens/">Elitch Gardens</a></td><td>3.05</td></tr>
-<tr><td><a href="parks/wild-adventures/">Wild Adventures</a></td><td>2.90</td></tr>
-<tr><td><a href="parks/dreamworld/">Dreamworld</a></td><td>2.49</td></tr>
-<tr><td><a href="parks/six-flags-america/">Six Flags America</a></td><td>0.00</td></tr>
-<tr><td><a href="parks/cotaland/">Cotaland</a></td><td>0.00</td></tr>
+<tr><th class="rank">Rank</th><th class="park">Park</th><th class="score">Score</th></tr>
+<tr><td class="rank">1</td><td class="park"><a href="parks/cedar-point/">Cedar Point</a></td><td class="score">62.26</td></tr>
+<tr><td class="rank">2</td><td class="park"><a href="parks/six-flags-magic-mountain/">Six Flags Magic Mountain</a></td><td class="score">49.28</td></tr>
+<tr><td class="rank">3</td><td class="park"><a href="parks/hersheypark/">Hersheypark</a></td><td class="score">44.12</td></tr>
+<tr><td class="rank">4</td><td class="park"><a href="parks/kings-island/">Kings Island</a></td><td class="score">38.59</td></tr>
+<tr><td class="rank">5</td><td class="park"><a href="parks/canada's-wonderland/">Canada's Wonderland</a></td><td class="score">36.69</td></tr>
+<tr><td class="rank">6</td><td class="park"><a href="parks/energylandia/">Energylandia</a></td><td class="score">34.42</td></tr>
+<tr><td class="rank">7</td><td class="park"><a href="parks/six-flags-great-adventure/">Six Flags Great Adventure</a></td><td class="score">34.15</td></tr>
+<tr><td class="rank">8</td><td class="park"><a href="parks/six-flags-great-america/">Six Flags Great America</a></td><td class="score">33.85</td></tr>
+<tr><td class="rank">11</td><td class="park"><a href="parks/six-flags-qiddiya-city/">Six Flags Qiddiya City</a></td><td class="score">33.78</td></tr>
+<tr><td class="rank">9</td><td class="park"><a href="parks/busch-gardens-tampa/">Busch Gardens Tampa</a></td><td class="score">33.14</td></tr>
+<tr><td class="rank">10</td><td class="park"><a href="parks/busch-gardens-williamsburg/">Busch Gardens Williamsburg</a></td><td class="score">32.96</td></tr>
+<tr><td class="rank">12</td><td class="park"><a href="parks/europa-park/">Europa Park</a></td><td class="score">32.35</td></tr>
+<tr><td class="rank">13</td><td class="park"><a href="parks/kings-dominion/">Kings Dominion</a></td><td class="score">30.93</td></tr>
+<tr><td class="rank">14</td><td class="park"><a href="parks/phantasialand/">Phantasialand</a></td><td class="score">30.19</td></tr>
+<tr><td class="rank">15</td><td class="park"><a href="parks/carowinds/">Carowinds</a></td><td class="score">30.16</td></tr>
+<tr><td class="rank">16</td><td class="park"><a href="parks/six-flags-fiesta-texas/">Six Flags Fiesta Texas</a></td><td class="score">27.06</td></tr>
+<tr><td class="rank">17</td><td class="park"><a href="parks/walibi-holland/">Walibi Holland</a></td><td class="score">26.02</td></tr>
+<tr><td class="rank">18</td><td class="park"><a href="parks/dollywood/">Dollywood</a></td><td class="score">25.89</td></tr>
+<tr><td class="rank">20</td><td class="park"><a href="parks/seaworld-orlando/">SeaWorld Orlando</a></td><td class="score">25.28</td></tr>
+<tr><td class="rank">19</td><td class="park"><a href="parks/alton-towers/">Alton Towers</a></td><td class="score">25.00</td></tr>
+<tr><td class="rank">22</td><td class="park"><a href="parks/six-flags-over-georgia/">Six Flags Over Georgia</a></td><td class="score">24.86</td></tr>
+<tr><td class="rank">21</td><td class="park"><a href="parks/nagashima-spa-land/">Nagashima Spa Land</a></td><td class="score">24.73</td></tr>
+<tr><td class="rank">23</td><td class="park"><a href="parks/silver-dollar-city/">Silver Dollar City</a></td><td class="score">24.24</td></tr>
+<tr><td class="rank">24</td><td class="park"><a href="parks/thorpe-park/">Thorpe Park</a></td><td class="score">23.76</td></tr>
+<tr><td class="rank">27</td><td class="park"><a href="parks/universal-epic-universe/">Universal Epic Universe</a></td><td class="score">23.55</td></tr>
+<tr><td class="rank">25</td><td class="park"><a href="parks/parque-warner-madrid/">Parque Warner Madrid</a></td><td class="score">23.37</td></tr>
+<tr><td class="rank">26</td><td class="park"><a href="parks/liseberg/">Liseberg</a></td><td class="score">23.35</td></tr>
+<tr><td class="rank">28</td><td class="park"><a href="parks/knott's-berry-farm/">Knott's Berry Farm</a></td><td class="score">22.59</td></tr>
+<tr><td class="rank">29</td><td class="park"><a href="parks/universal-islands-of-adventure/">Universal Islands of Adventure</a></td><td class="score">22.40</td></tr>
+<tr><td class="rank">30</td><td class="park"><a href="parks/six-flags-new-england/">Six Flags New England</a></td><td class="score">21.96</td></tr>
+<tr><td class="rank">31</td><td class="park"><a href="parks/parc-astérix/">Parc Astérix</a></td><td class="score">21.93</td></tr>
+<tr><td class="rank">32</td><td class="park"><a href="parks/ferrari-world-abu-dhabi/">Ferrari World Abu Dhabi</a></td><td class="score">21.43</td></tr>
+<tr><td class="rank">33</td><td class="park"><a href="parks/walibi-belgium/">Walibi Belgium</a></td><td class="score">20.85</td></tr>
+<tr><td class="rank">34</td><td class="park"><a href="parks/six-flags-over-texas/">Six Flags Over Texas</a></td><td class="score">20.77</td></tr>
+<tr><td class="rank">35</td><td class="park"><a href="parks/fuji-q-highland/">Fuji-Q Highland</a></td><td class="score">19.55</td></tr>
+<tr><td class="rank">37</td><td class="park"><a href="parks/kennywood/">Kennywood</a></td><td class="score">19.32</td></tr>
+<tr><td class="rank">36</td><td class="park"><a href="parks/mirabilandia/">Mirabilandia</a></td><td class="score">19.32</td></tr>
+<tr><td class="rank">38</td><td class="park"><a href="parks/holiday-world/">Holiday World</a></td><td class="score">19.04</td></tr>
+<tr><td class="rank">39</td><td class="park"><a href="parks/california's-great-america/">California's Great America</a></td><td class="score">19.02</td></tr>
+<tr><td class="rank">40</td><td class="park"><a href="parks/portaventura-park/">PortAventura Park</a></td><td class="score">17.62</td></tr>
+<tr><td class="rank">42</td><td class="park"><a href="parks/kentucky-kingdom/">Kentucky Kingdom</a></td><td class="score">17.15</td></tr>
+<tr><td class="rank">41</td><td class="park"><a href="parks/heide-park-resort/">Heide Park Resort</a></td><td class="score">17.11</td></tr>
+<tr><td class="rank">43</td><td class="park"><a href="parks/plopsaland-belgium/">Plopsaland Belgium</a></td><td class="score">16.76</td></tr>
+<tr><td class="rank">44</td><td class="park"><a href="parks/universal-studios-japan/">Universal Studios Japan</a></td><td class="score">16.36</td></tr>
+<tr><td class="rank">45</td><td class="park"><a href="parks/six-flags-discovery-kingdom/">Six Flags Discovery Kingdom</a></td><td class="score">15.98</td></tr>
+<tr><td class="rank">46</td><td class="park"><a href="parks/hansa-park/">Hansa-Park</a></td><td class="score">15.91</td></tr>
+<tr><td class="rank">48</td><td class="park"><a href="parks/six-flags-mexico/">Six Flags Mexico</a></td><td class="score">15.27</td></tr>
+<tr><td class="rank">47</td><td class="park"><a href="parks/linnanmäki/">Linnanmäki</a></td><td class="score">15.16</td></tr>
+<tr><td class="rank">50</td><td class="park"><a href="parks/efteling/">Efteling</a></td><td class="score">14.50</td></tr>
+<tr><td class="rank">49</td><td class="park"><a href="parks/djurs-sommerland/">Djurs Sommerland</a></td><td class="score">14.23</td></tr>
+<tr><td class="rank">51</td><td class="park"><a href="parks/fårup-sommerland/">Fårup Sommerland</a></td><td class="score">14.23</td></tr>
+<tr><td class="rank">52</td><td class="park"><a href="parks/six-flags-st-louis/">Six Flags St Louis</a></td><td class="score">14.10</td></tr>
+<tr><td class="rank">53</td><td class="park"><a href="parks/knoebels/">Knoebels</a></td><td class="score">13.90</td></tr>
+<tr><td class="rank">57</td><td class="park"><a href="parks/lagoon/">Lagoon</a></td><td class="score">13.82</td></tr>
+<tr><td class="rank">55</td><td class="park"><a href="parks/walibi-rhône-alpes/">Walibi Rhône-Alpes</a></td><td class="score">13.80</td></tr>
+<tr><td class="rank">58</td><td class="park"><a href="parks/warner-bros.-movie-world/">Warner Bros. Movie World</a></td><td class="score">13.78</td></tr>
+<tr><td class="rank">54</td><td class="park"><a href="parks/pleasure-beach-resort/">Pleasure Beach Resort</a></td><td class="score">13.74</td></tr>
+<tr><td class="rank">56</td><td class="park"><a href="parks/dorney-park/">Dorney Park</a></td><td class="score">13.71</td></tr>
+<tr><td class="rank">59</td><td class="park"><a href="parks/erlebnispark-tripsdrill/">Erlebnispark Tripsdrill</a></td><td class="score">12.79</td></tr>
+<tr><td class="rank">62</td><td class="park"><a href="parks/worlds-of-fun/">Worlds of Fun</a></td><td class="score">12.78</td></tr>
+<tr><td class="rank">61</td><td class="park"><a href="parks/powerpark/">PowerPark</a></td><td class="score">12.39</td></tr>
+<tr><td class="rank">60</td><td class="park"><a href="parks/nanchang-sunac-land/">Nanchang Sunac Land</a></td><td class="score">12.30</td></tr>
+<tr><td class="rank">65</td><td class="park"><a href="parks/seaworld-san-antonio/">SeaWorld San Antonio</a></td><td class="score">11.36</td></tr>
+<tr><td class="rank">64</td><td class="park"><a href="parks/motiongate/">Motiongate</a></td><td class="score">11.34</td></tr>
+<tr><td class="rank">63</td><td class="park"><a href="parks/plopsaland-deutschland/">Plopsaland Deutschland</a></td><td class="score">11.17</td></tr>
+<tr><td class="rank">66</td><td class="park"><a href="parks/emerald-park/">Emerald Park</a></td><td class="score">11.03</td></tr>
+<tr><td class="rank">67</td><td class="park"><a href="parks/wiener-prater/">Wiener Prater</a></td><td class="score">10.79</td></tr>
+<tr><td class="rank">68</td><td class="park"><a href="parks/la-ronde/">La Ronde</a></td><td class="score">10.29</td></tr>
+<tr><td class="rank">69</td><td class="park"><a href="parks/gardaland/">Gardaland</a></td><td class="score">10.26</td></tr>
+<tr><td class="rank">70</td><td class="park"><a href="parks/fun-spot-america-atlanta/">Fun Spot America Atlanta</a></td><td class="score">10.25</td></tr>
+<tr><td class="rank">71</td><td class="park"><a href="parks/kolmården/">Kolmården</a></td><td class="score">10.15</td></tr>
+<tr><td class="rank">72</td><td class="park"><a href="parks/everland/">Everland</a></td><td class="score">9.94</td></tr>
+<tr><td class="rank">73</td><td class="park"><a href="parks/freizeitpark-plohn/">Freizeitpark Plohn</a></td><td class="score">9.60</td></tr>
+<tr><td class="rank">74</td><td class="park"><a href="parks/valleyfair!/">Valleyfair!</a></td><td class="score">9.47</td></tr>
+<tr><td class="rank">75</td><td class="park"><a href="parks/silverwood-theme-park/">Silverwood Theme Park</a></td><td class="score">9.10</td></tr>
+<tr><td class="rank">76</td><td class="park"><a href="parks/movie-park-germany/">Movie Park Germany</a></td><td class="score">9.09</td></tr>
+<tr><td class="rank">77</td><td class="park"><a href="parks/adventureland-iowa/">Adventureland Iowa</a></td><td class="score">9.00</td></tr>
+<tr><td class="rank">78</td><td class="park"><a href="parks/legendia/">Legendia</a></td><td class="score">8.54</td></tr>
+<tr><td class="rank">79</td><td class="park"><a href="parks/bobbejaanland/">Bobbejaanland</a></td><td class="score">8.38</td></tr>
+<tr><td class="rank">81</td><td class="park"><a href="parks/six-flags-darien-lake/">Six Flags Darien Lake</a></td><td class="score">8.15</td></tr>
+<tr><td class="rank">80</td><td class="park"><a href="parks/tusenfryd/">TusenFryd</a></td><td class="score">8.06</td></tr>
+<tr><td class="rank">82</td><td class="park"><a href="parks/nigloland/">Nigloland</a></td><td class="score">7.96</td></tr>
+<tr><td class="rank">84</td><td class="park"><a href="parks/michigan's-adventure/">Michigan's Adventure</a></td><td class="score">7.77</td></tr>
+<tr><td class="rank">83</td><td class="park"><a href="parks/gröna-lund/">Gröna Lund</a></td><td class="score">7.73</td></tr>
+<tr><td class="rank">85</td><td class="park"><a href="parks/happy-valley-beijing/">Happy Valley Beijing</a></td><td class="score">7.57</td></tr>
+<tr><td class="rank">86</td><td class="park"><a href="parks/seaworld-san-diego/">SeaWorld San Diego</a></td><td class="score">7.29</td></tr>
+<tr><td class="rank">87</td><td class="park"><a href="parks/universal-studios-florida/">Universal Studios Florida</a></td><td class="score">6.98</td></tr>
+<tr><td class="rank">88</td><td class="park"><a href="parks/indiana-beach/">Indiana Beach</a></td><td class="score">6.71</td></tr>
+<tr><td class="rank">89</td><td class="park"><a href="parks/greenland/">Greenland</a></td><td class="score">6.65</td></tr>
+<tr><td class="rank">90</td><td class="park"><a href="parks/flamingo-land/">Flamingo Land</a></td><td class="score">5.94</td></tr>
+<tr><td class="rank">91</td><td class="park"><a href="parks/morey's-piers/">Morey's Piers</a></td><td class="score">4.88</td></tr>
+<tr><td class="rank">92</td><td class="park"><a href="parks/elitch-gardens/">Elitch Gardens</a></td><td class="score">3.05</td></tr>
+<tr><td class="rank">93</td><td class="park"><a href="parks/wild-adventures/">Wild Adventures</a></td><td class="score">2.90</td></tr>
+<tr><td class="rank">94</td><td class="park"><a href="parks/dreamworld/">Dreamworld</a></td><td class="score">2.49</td></tr>
+<tr><td class="rank">95</td><td class="park"><a href="parks/six-flags-america/">Six Flags America</a></td><td class="score">0.00</td></tr>
+<tr><td class="rank">96</td><td class="park"><a href="parks/cotaland/">Cotaland</a></td><td class="score">0.00</td></tr>
 
 </table>
 
