@@ -18,13 +18,13 @@ table {
     table-layout: fixed;
 }
 th, td {
-    border: 1px solid #555;
+    border: 1px solid #fff;
     padding: 12px;
     text-align: center;
 }
-th {
-    background-color: #1E90FF;
-}
+th { background-color: #FFA500; }
+.summary-table th { background-color: #FFA500; }
+.summary-table td { border: 1px solid #fff; background-color: transparent; }
 a.back-link {
     display: block;
     text-align: center;
@@ -44,12 +44,32 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 <body>
 
 <h1>Happy Valley Beijing</h1>
-<p>Total Park Score: 7.57</p>
+
+
+    <table class="summary-table">
+        <tr>
+            <th>OVR SCORE</th>
+            <th>TOP 3</th>
+            <th>TOP 4</th>
+            <th>INSIDE 500</th>
+            <th>SCOREABLE COASTERS</th>
+            <th>AVERAGE</th>
+        </tr>
+        <tr>
+            <td>7.57</td>
+            <td>6.922880625</td>
+            <td>7.570965845</td>
+            <td>6.271054793</td>
+            <td>4</td>
+            <td>1.892741461</td>
+        </tr>
+    </table>
+    
+
 <h2>Coaster Breakdown</h2>
 
 <table>
 <tr><th>Coaster Name</th><th>World Rank</th><th>Status</th><th>Score</th></tr>
-<tr style="background-color:#1C1C1C"><td>Unnamed Mine Coaster</td><td></td><td>Purple</td><td>0</td></tr>
 <tr style="background-color:#1C1C1C"><td>Himalayan Eagle Music Roller Coaster</td><td>246</td><td>Success</td><td>3.202227458</td></tr>
 <tr style="background-color:#1C1C1C"><td>Crystal Wings</td><td>256</td><td>Success</td><td>3.068827335</td></tr>
 <tr style="background-color:#1C1C1C"><td>Family Inverted Coaster</td><td>931</td><td>Success</td><td>0.651825832</td></tr>
@@ -60,7 +80,7 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 
 </table>
 
-<a href="../index.html" class="back-link">Back to Rankings</a>
+<a href="/index.html" class="back-link">Back to Rankings</a>
 
 </body>
 </html>

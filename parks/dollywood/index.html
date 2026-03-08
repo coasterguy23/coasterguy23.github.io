@@ -18,13 +18,13 @@ table {
     table-layout: fixed;
 }
 th, td {
-    border: 1px solid #555;
+    border: 1px solid #fff;
     padding: 12px;
     text-align: center;
 }
-th {
-    background-color: #1E90FF;
-}
+th { background-color: #FFA500; }
+.summary-table th { background-color: #FFA500; }
+.summary-table td { border: 1px solid #fff; background-color: transparent; }
 a.back-link {
     display: block;
     text-align: center;
@@ -44,12 +44,32 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 <body>
 
 <h1>Dollywood</h1>
-<p>Total Park Score: 25.89</p>
+
+
+    <table class="summary-table">
+        <tr>
+            <th>OVR SCORE</th>
+            <th>TOP 3</th>
+            <th>TOP 4</th>
+            <th>INSIDE 500</th>
+            <th>SCOREABLE COASTERS</th>
+            <th>AVERAGE</th>
+        </tr>
+        <tr>
+            <td>25.89</td>
+            <td>16.97909271</td>
+            <td>19.36898977</td>
+            <td>24.41277522</td>
+            <td>9</td>
+            <td>2.876926341</td>
+        </tr>
+    </table>
+    
+
 <h2>Coaster Breakdown</h2>
 
 <table>
 <tr><th>Coaster Name</th><th>World Rank</th><th>Status</th><th>Score</th></tr>
-<tr style="background-color:#1C1C1C"><td>NightFlight Expedition</td><td></td><td>Purple</td><td>0</td></tr>
 <tr style="background-color:#1C1C1C"><td>Lightning Rod</td><td>34</td><td>Success</td><td>8.509714636</td></tr>
 <tr style="background-color:#1C1C1C"><td>Thunderhead</td><td>132</td><td>Success</td><td>5.33472068</td></tr>
 <tr style="background-color:#1C1C1C"><td>Wild Eagle</td><td>251</td><td>Success</td><td>3.134657399</td></tr>
@@ -65,7 +85,7 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 
 </table>
 
-<a href="../index.html" class="back-link">Back to Rankings</a>
+<a href="/index.html" class="back-link">Back to Rankings</a>
 
 </body>
 </html>

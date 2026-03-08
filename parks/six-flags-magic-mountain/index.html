@@ -18,13 +18,13 @@ table {
     table-layout: fixed;
 }
 th, td {
-    border: 1px solid #555;
+    border: 1px solid #fff;
     padding: 12px;
     text-align: center;
 }
-th {
-    background-color: #1E90FF;
-}
+th { background-color: #FFA500; }
+.summary-table th { background-color: #FFA500; }
+.summary-table td { border: 1px solid #fff; background-color: transparent; }
 a.back-link {
     display: block;
     text-align: center;
@@ -44,12 +44,32 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 <body>
 
 <h1>Six Flags Magic Mountain</h1>
-<p>Total Park Score: 49.28</p>
+
+
+    <table class="summary-table">
+        <tr>
+            <th>OVR SCORE</th>
+            <th>TOP 3</th>
+            <th>TOP 4</th>
+            <th>INSIDE 500</th>
+            <th>SCOREABLE COASTERS</th>
+            <th>AVERAGE</th>
+        </tr>
+        <tr>
+            <td>49.28</td>
+            <td>23.85967936</td>
+            <td>30.02946384</td>
+            <td>45.61201853</td>
+            <td>16</td>
+            <td>3.080049289</td>
+        </tr>
+    </table>
+    
+
 <h2>Coaster Breakdown</h2>
 
 <table>
 <tr><th>Coaster Name</th><th>World Rank</th><th>Status</th><th>Score</th></tr>
-<tr style="background-color:#1C1C1C"><td>Unnamed Thrill Glider</td><td></td><td>Purple</td><td>0</td></tr>
 <tr style="background-color:#1C1C1C"><td>Twisted Colossus</td><td>33</td><td>Success</td><td>8.551206559</td></tr>
 <tr style="background-color:#1C1C1C"><td>X2</td><td>41</td><td>Success</td><td>8.225254623</td></tr>
 <tr style="background-color:#1C1C1C"><td>Tatsu</td><td>72</td><td>Success</td><td>7.083218175</td></tr>
@@ -83,7 +103,7 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 
 </table>
 
-<a href="../index.html" class="back-link">Back to Rankings</a>
+<a href="/index.html" class="back-link">Back to Rankings</a>
 
 </body>
 </html>

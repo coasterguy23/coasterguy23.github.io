@@ -18,13 +18,13 @@ table {
     table-layout: fixed;
 }
 th, td {
-    border: 1px solid #555;
+    border: 1px solid #fff;
     padding: 12px;
     text-align: center;
 }
-th {
-    background-color: #1E90FF;
-}
+th { background-color: #FFA500; }
+.summary-table th { background-color: #FFA500; }
+.summary-table td { border: 1px solid #fff; background-color: transparent; }
 a.back-link {
     display: block;
     text-align: center;
@@ -44,12 +44,32 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 <body>
 
 <h1>Universal Studios Florida</h1>
-<p>Total Park Score: 6.98</p>
+
+
+    <table class="summary-table">
+        <tr>
+            <th>OVR SCORE</th>
+            <th>TOP 3</th>
+            <th>TOP 4</th>
+            <th>INSIDE 500</th>
+            <th>SCOREABLE COASTERS</th>
+            <th>AVERAGE</th>
+        </tr>
+        <tr>
+            <td>6.98</td>
+            <td>6.977817038</td>
+            <td>6.977817038</td>
+            <td>6.398538281</td>
+            <td>3</td>
+            <td>2.325939013</td>
+        </tr>
+    </table>
+    
+
 <h2>Coaster Breakdown</h2>
 
 <table>
 <tr><th>Coaster Name</th><th>World Rank</th><th>Status</th><th>Score</th></tr>
-<tr style="background-color:#1C1C1C"><td>Fast & Furious: Hollywood Drift</td><td></td><td>Purple</td><td>0</td></tr>
 <tr style="background-color:#1C1C1C"><td>Revenge of the Mummy</td><td>208</td><td>Success</td><td>3.777648606</td></tr>
 <tr style="background-color:#1C1C1C"><td>Harry Potter and the Escape from Gringotts</td><td>294</td><td>Success</td><td>2.620889675</td></tr>
 <tr style="background-color:#1C1C1C"><td>Trolls Trollercoaster</td><td>1749</td><td>Success</td><td>0.579278757</td></tr>
@@ -57,7 +77,7 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 
 </table>
 
-<a href="../index.html" class="back-link">Back to Rankings</a>
+<a href="/index.html" class="back-link">Back to Rankings</a>
 
 </body>
 </html>

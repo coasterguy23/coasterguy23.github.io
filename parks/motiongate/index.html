@@ -18,13 +18,13 @@ table {
     table-layout: fixed;
 }
 th, td {
-    border: 1px solid #555;
+    border: 1px solid #fff;
     padding: 12px;
     text-align: center;
 }
-th {
-    background-color: #1E90FF;
-}
+th { background-color: #FFA500; }
+.summary-table th { background-color: #FFA500; }
+.summary-table td { border: 1px solid #fff; background-color: transparent; }
 a.back-link {
     display: block;
     text-align: center;
@@ -44,7 +44,28 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 <body>
 
 <h1>Motiongate</h1>
-<p>Total Park Score: 11.34</p>
+
+
+    <table class="summary-table">
+        <tr>
+            <th>OVR SCORE</th>
+            <th>TOP 3</th>
+            <th>TOP 4</th>
+            <th>INSIDE 500</th>
+            <th>SCOREABLE COASTERS</th>
+            <th>AVERAGE</th>
+        </tr>
+        <tr>
+            <td>11.34</td>
+            <td>8.401956539</td>
+            <td>9.312575011</td>
+            <td>8.401956539</td>
+            <td>7</td>
+            <td>1.619473224</td>
+        </tr>
+    </table>
+    
+
 <h2>Coaster Breakdown</h2>
 
 <table>
@@ -59,7 +80,7 @@ a.back-link:hover { background-color:#1E90FF; color:#fff; }
 
 </table>
 
-<a href="../index.html" class="back-link">Back to Rankings</a>
+<a href="/index.html" class="back-link">Back to Rankings</a>
 
 </body>
 </html>
