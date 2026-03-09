@@ -258,7 +258,6 @@ const chart = new Chart(ctx, {
                 display: true,
                 position: 'right',
                 onClick: null,
-                color: '#FFFFFF',
                 labels: {
                     color: '#FFFFFF',
                     generateLabels: function(chart) {
@@ -269,6 +268,7 @@ const chart = new Chart(ctx, {
                                 fillStyle: d.borderColor,
                                 hidden: d.hidden,
                                 datasetIndex: chart.data.datasets.indexOf(d)
+                                fontColor: '#FFFFFF'
                             }));
                     }
                 }
