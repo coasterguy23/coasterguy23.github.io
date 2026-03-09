@@ -253,28 +253,12 @@ const chart = new Chart(ctx, {
     },
     options: {
         responsive: true,
-        scales: {
-            x: {
-                reverse: true,  // <-- reverses x-axis
-                title: { display: true, text: 'Month' }
-            },
-            y: {
-                beginAtZero: true,
-                title: { display: true, text: 'Score' }
-            }
-        },
         plugins: {
             legend: {
                 display: true,
+                onClick: null, // disables clicks on legend items
                 labels: {
-                    color: function(context) {
-                        // Make sure dataset exists
-                        if (context.dataset) {
-                            // If dataset is visible, return white, otherwise gray
-                            return !context.dataset.hidden ? '#FFFFFF' : '#888888';
-                        }
-                        return '#888888'; // fallback if dataset missing
-                    }
+                    color: '#FFFFFF' // all legend text is white
                 }
             },
             tooltip: {
@@ -284,6 +268,10 @@ const chart = new Chart(ctx, {
                     }
                 }
             }
+        },
+        scales: {
+            y: { title: { display: true, text: 'Score' } },
+            x: { title: { display: true, text: 'Month' } }
         }
     }
 });
