@@ -250,17 +250,51 @@ const colors = [
 '#7FFF00','#DC143C','#00BFFF','#FF1493','#20B2AA','#FF6347','#BA55D3','#40E0D0','#FF8C00','#7B68EE'
 ];
 
+const monthsReversed = [...months].reverse();
+
+const parkDataReversed = parkData.map(d => ({
+    ...d,
+    data: [...d.data].reverse()
+}));
+
 parkData.forEach((d,i)=>d.borderColor=colors[i%colors.length]);
 
 const chart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Mar-26', 'Feb-26', 'Jan-26', 'Dec-25', 'Nov-25', 'Oct-25', 'Sep-25', 'Aug-25', 'Jul-25', 'Jun-25', 'May-25', 'Apr-25', 'Mar-25', 'Feb-25', 'Jan-25', 'Dec-24', 'Nov-24', 'Oct-24', 'Sep-24', 'Aug-24', 'Jul-24', 'Jun-24', 'May-24', 'Apr-24', 'Mar-24', 'Feb-24', 'Jan-24', 'Dec-23', 'Nov-23', 'Oct-23', 'Sep-23', 'Aug-23'],
-        datasets: parkData
-    },
+    labels: monthsReversed,
+    datasets: parkDataReversed
+    }
     options: {
-        responsive: true,
         plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    color: '#ccc', // default gray
+                    generateLabels: function(chart) {
+                        const original = Chart.overrides.line.plugins.legend.labels.generateLabels(chart);
+                        return original.map(label => {
+                            if (!chart.data.datasets[label.datasetIndex].hidden) {
+                                label.fillStyle = chart.data.datasets[label.datasetIndex].borderColor;
+                                label.textColor = '#fff';
+                                label.fontStyle = 'bold';
+                            } else {
+                                label.textColor = '#ccc';
+                                label.fontStyle = 'normal';
+                            }
+                            return label;
+                        });
+                    }
+                },
+                onClick: function(e, legendItem, legend) {
+                    const index = legendItem.datasetIndex;
+                    const ci = legend.chart;
+                    const meta = ci.getDatasetMeta(index);
+                    meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+                    ci.update();
+                    syncCheckboxes();
+                }
+            },
             tooltip: {
                 callbacks: {
                     label: function(context) {
@@ -270,17 +304,21 @@ const chart = new Chart(ctx, {
             }
         },
         scales: {
-            y: {
-                title: { display: true, text: 'Score' }
-            },
-            x: {
-                title: { display: true, text: 'Month' }
-            }
+            y: { title: { display: true, text: 'Score' } },
+            x: { title: { display: true, text: 'Month' } }
         }
     }
 });
 
 // Handle checkbox selection
+function syncCheckboxes() {
+    parkData.forEach((d, i) => {
+        const cb = document.querySelector('input[name="park"][value="'+d.label+'"]');
+        if (cb) cb.checked = !d.hidden;
+    });
+}
+
+// Checkbox change handler
 document.getElementById('parkForm').addEventListener('change', function() {
     const checked = Array.from(document.querySelectorAll('input[name="park"]:checked')).map(i=>i.value);
     parkData.forEach(d => {
@@ -289,12 +327,14 @@ document.getElementById('parkForm').addEventListener('change', function() {
     chart.update();
 });
 
-function clearSelection(){
+// Clear selection
+function clearSelection() {
     document.querySelectorAll('input[name="park"]').forEach(cb=>cb.checked=false);
     parkData.forEach(d=>d.hidden=true);
     chart.update();
 }
 
+// Select top 20
 function selectTop20(){
     clearSelection();
     document.querySelectorAll('input[name="park"]').forEach((cb,i)=>{
