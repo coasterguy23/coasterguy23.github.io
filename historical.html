@@ -142,6 +142,10 @@ button:hover { background-color: #0F75D8; }
 </div>
 
 <script>
+const months = [{months_js}];
+</script>
+
+<script>
 const ctx = document.getElementById('historicalChart').getContext('2d');
 
 const parkData = [
@@ -257,14 +261,14 @@ const parkDataReversed = parkData.map(d => ({
     data: [...d.data].reverse()
 }));
 
-parkData.forEach((d,i)=>d.borderColor=colors[i%colors.length]);
+parkDataReversed.forEach((d,i)=>d.borderColor=colors[i%colors.length]);
 
 const chart = new Chart(ctx, {
     type: 'line',
     data: {
     labels: monthsReversed,
     datasets: parkDataReversed
-    }
+    },
     options: {
         plugins: {
             legend: {
@@ -312,7 +316,7 @@ const chart = new Chart(ctx, {
 
 // Handle checkbox selection
 function syncCheckboxes() {
-    parkData.forEach((d, i) => {
+    parkDataReversed.forEach((d, i) => {
         const cb = document.querySelector('input[name="park"][value="'+d.label+'"]');
         if (cb) cb.checked = !d.hidden;
     });
@@ -321,7 +325,7 @@ function syncCheckboxes() {
 // Checkbox change handler
 document.getElementById('parkForm').addEventListener('change', function() {
     const checked = Array.from(document.querySelectorAll('input[name="park"]:checked')).map(i=>i.value);
-    parkData.forEach(d => {
+    parkDataReversed.forEach(d => {
         d.hidden = !checked.includes(d.label);
     });
     chart.update();
@@ -330,7 +334,7 @@ document.getElementById('parkForm').addEventListener('change', function() {
 // Clear selection
 function clearSelection() {
     document.querySelectorAll('input[name="park"]').forEach(cb=>cb.checked=false);
-    parkData.forEach(d=>d.hidden=true);
+    parkDataReversed.forEach(d=>d.hidden=true);
     chart.update();
 }
 
@@ -338,7 +342,7 @@ function clearSelection() {
 function selectTop20(){
     clearSelection();
     document.querySelectorAll('input[name="park"]').forEach((cb,i)=>{
-        if(i<20){ cb.checked=true; parkData[i].hidden=false; }
+        if(i<20){ cb.checked=true; parkDataReversed[i].hidden=false; }
     });
     chart.update();
 }
