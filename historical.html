@@ -267,10 +267,13 @@ const chart = new Chart(ctx, {
             legend: {
                 display: true,
                 labels: {
-                    // Change text color depending on whether dataset is hidden
                     color: function(context) {
-                        // If dataset is visible (not hidden), return white
-                        return !context.dataset.hidden ? '#FFFFFF' : '#888888'; 
+                        // Make sure dataset exists
+                        if (context.dataset) {
+                            // If dataset is visible, return white, otherwise gray
+                            return !context.dataset.hidden ? '#FFFFFF' : '#888888';
+                        }
+                        return '#888888'; // fallback if dataset missing
                     }
                 }
             },
