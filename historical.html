@@ -256,15 +256,19 @@ const chart = new Chart(ctx, {
         plugins: {
             legend: {
                 display: true,
-                onClick: null, // disables clicks on legend items
+                position: 'right',
+                onClick: null,
                 labels: {
-                    color: '#FFFFFF' // all legend text is white
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        return context.dataset.label + ": " + context.raw;
+                    color: '#FFFFFF',
+                    generateLabels: function(chart) {
+                        return chart.data.datasets
+                            .filter(d => !d.hidden)   // only datasets that are visible
+                            .map(d => ({
+                                text: d.label,
+                                fillStyle: d.borderColor,
+                                hidden: d.hidden,
+                                datasetIndex: chart.data.datasets.indexOf(d)
+                            }));
                     }
                 }
             }
