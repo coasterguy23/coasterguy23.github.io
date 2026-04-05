@@ -29,11 +29,28 @@ button {
     cursor: pointer;
 }
 button:hover { background-color: #0F75D8; }
+a.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: 1px solid #1E90FF;
+    border-radius: 5px;
+    width: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    text-decoration:none;
+    color:#1E90FF;
+}
+a.back-link:hover { background-color:#1E90FF; color:#fff; }
 </style>
 </head>
 <body>
 
 <h1>Historical Park Scores</h1>
+
+<a href="/index.html" class="back-link">Back to Rankings</a>
+
 <canvas id="historicalChart" width="1000" height="500"></canvas>
 
 <div id="controls">
