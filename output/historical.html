@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Historical Park Scores</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 40px;
+}
+h1 { color: #1E90FF; text-align: center; }
+#controls {
+    text-align: center;
+    margin-top: 20px;
+}
+label {
+    display: inline-block;
+    width: 180px;
+}
+button {
+    margin: 10px;
+    padding: 8px 15px;
+    background-color: #1E90FF;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover { background-color: #0F75D8; }
+a.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: 1px solid #1E90FF;
+    border-radius: 5px;
+    width: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    text-decoration:none;
+    color:#1E90FF;
+}
+a.back-link:hover { background-color:#1E90FF; color:#fff; }
+</style>
+</head>
+<body>
+
+<h1>Historical Park Scores</h1>
+
+<a href="/index.html" class="back-link">Back to Rankings</a>
+
+<canvas id="historicalChart" width="1000" height="500"></canvas>
+
+<div id="controls">
+<button onclick="clearSelection()">Clear Selection</button>
+<button onclick="selectTop20()">Select Top 20</button>
+<br><br>
+<form id="parkForm">
+<input type="checkbox" name="park" value="Cedar Point"> Cedar Point<br>
+<input type="checkbox" name="park" value="Six Flags Magic Mountain"> Six Flags Magic Mountain<br>
+<input type="checkbox" name="park" value="Hersheypark"> Hersheypark<br>
+<input type="checkbox" name="park" value="Kings Island"> Kings Island<br>
+<input type="checkbox" name="park" value="Canada's Wonderland"> Canada's Wonderland<br>
+<input type="checkbox" name="park" value="Six Flags Great America"> Six Flags Great America<br>
+<input type="checkbox" name="park" value="Energylandia"> Energylandia<br>
+<input type="checkbox" name="park" value="Six Flags Great Adventure"> Six Flags Great Adventure<br>
+<input type="checkbox" name="park" value="Six Flags Qiddiya City"> Six Flags Qiddiya City<br>
+<input type="checkbox" name="park" value="Busch Gardens Williamsburg"> Busch Gardens Williamsburg<br>
+<input type="checkbox" name="park" value="Busch Gardens Tampa"> Busch Gardens Tampa<br>
+<input type="checkbox" name="park" value="Europa Park"> Europa Park<br>
+<input type="checkbox" name="park" value="Kings Dominion"> Kings Dominion<br>
+<input type="checkbox" name="park" value="Phantasialand"> Phantasialand<br>
+<input type="checkbox" name="park" value="Carowinds"> Carowinds<br>
+<input type="checkbox" name="park" value="Six Flags Fiesta Texas"> Six Flags Fiesta Texas<br>
+<input type="checkbox" name="park" value="Dollywood"> Dollywood<br>
+<input type="checkbox" name="park" value="Walibi Holland"> Walibi Holland<br>
+<input type="checkbox" name="park" value="Alton Towers"> Alton Towers<br>
+<input type="checkbox" name="park" value="SeaWorld Orlando"> SeaWorld Orlando<br>
+<input type="checkbox" name="park" value="Six Flags Over Georgia"> Six Flags Over Georgia<br>
+<input type="checkbox" name="park" value="Nagashima Spa Land"> Nagashima Spa Land<br>
+<input type="checkbox" name="park" value="Silver Dollar City"> Silver Dollar City<br>
+<input type="checkbox" name="park" value="Thorpe Park"> Thorpe Park<br>
+<input type="checkbox" name="park" value="Parque Warner Madrid"> Parque Warner Madrid<br>
+<input type="checkbox" name="park" value="Universal Epic Universe"> Universal Epic Universe<br>
+<input type="checkbox" name="park" value="Liseberg"> Liseberg<br>
+<input type="checkbox" name="park" value="Knott's Berry Farm"> Knott's Berry Farm<br>
+<input type="checkbox" name="park" value="Six Flags New England"> Six Flags New England<br>
+<input type="checkbox" name="park" value="Universal Islands of Adventure"> Universal Islands of Adventure<br>
+<input type="checkbox" name="park" value="Parc Astérix"> Parc Astérix<br>
+<input type="checkbox" name="park" value="Ferrari World Abu Dhabi"> Ferrari World Abu Dhabi<br>
+<input type="checkbox" name="park" value="Walibi Belgium"> Walibi Belgium<br>
+<input type="checkbox" name="park" value="Six Flags Over Texas"> Six Flags Over Texas<br>
+<input type="checkbox" name="park" value="Fuji-Q Highland"> Fuji-Q Highland<br>
+<input type="checkbox" name="park" value="Kennywood"> Kennywood<br>
+<input type="checkbox" name="park" value="Mirabilandia"> Mirabilandia<br>
+<input type="checkbox" name="park" value="Holiday World"> Holiday World<br>
+<input type="checkbox" name="park" value="California's Great America"> California's Great America<br>
+<input type="checkbox" name="park" value="Kentucky Kingdom"> Kentucky Kingdom<br>
+<input type="checkbox" name="park" value="PortAventura Park"> PortAventura Park<br>
+<input type="checkbox" name="park" value="Heide Park Resort"> Heide Park Resort<br>
+<input type="checkbox" name="park" value="Plopsaland Belgium"> Plopsaland Belgium<br>
+<input type="checkbox" name="park" value="Universal Studios Japan"> Universal Studios Japan<br>
+<input type="checkbox" name="park" value="Six Flags Discovery Kingdom"> Six Flags Discovery Kingdom<br>
+<input type="checkbox" name="park" value="Hansa-Park"> Hansa-Park<br>
+<input type="checkbox" name="park" value="Linnanmäki"> Linnanmäki<br>
+<input type="checkbox" name="park" value="Six Flags Mexico"> Six Flags Mexico<br>
+<input type="checkbox" name="park" value="Efteling"> Efteling<br>
+<input type="checkbox" name="park" value="Fårup Sommerland"> Fårup Sommerland<br>
+<input type="checkbox" name="park" value="Warner Bros. Movie World"> Warner Bros. Movie World<br>
+<input type="checkbox" name="park" value="Djurs Sommerland"> Djurs Sommerland<br>
+<input type="checkbox" name="park" value="Six Flags St Louis"> Six Flags St Louis<br>
+<input type="checkbox" name="park" value="Dorney Park"> Dorney Park<br>
+<input type="checkbox" name="park" value="Knoebels"> Knoebels<br>
+<input type="checkbox" name="park" value="Pleasure Beach Resort"> Pleasure Beach Resort<br>
+<input type="checkbox" name="park" value="Lagoon"> Lagoon<br>
+<input type="checkbox" name="park" value="Walibi Rhône-Alpes"> Walibi Rhône-Alpes<br>
+<input type="checkbox" name="park" value="Worlds of Fun"> Worlds of Fun<br>
+<input type="checkbox" name="park" value="Erlebnispark Tripsdrill"> Erlebnispark Tripsdrill<br>
+<input type="checkbox" name="park" value="Nanchang Sunac Land"> Nanchang Sunac Land<br>
+<input type="checkbox" name="park" value="PowerPark"> PowerPark<br>
+<input type="checkbox" name="park" value="SeaWorld San Antonio"> SeaWorld San Antonio<br>
+<input type="checkbox" name="park" value="Plopsaland Deutschland"> Plopsaland Deutschland<br>
+<input type="checkbox" name="park" value="Silverwood Theme Park"> Silverwood Theme Park<br>
+<input type="checkbox" name="park" value="Motiongate"> Motiongate<br>
+<input type="checkbox" name="park" value="Emerald Park"> Emerald Park<br>
+<input type="checkbox" name="park" value="Wiener Prater"> Wiener Prater<br>
+<input type="checkbox" name="park" value="La Ronde"> La Ronde<br>
+<input type="checkbox" name="park" value="Gardaland"> Gardaland<br>
+<input type="checkbox" name="park" value="Fun Spot America Atlanta"> Fun Spot America Atlanta<br>
+<input type="checkbox" name="park" value="Kolmården"> Kolmården<br>
+<input type="checkbox" name="park" value="Everland"> Everland<br>
+<input type="checkbox" name="park" value="Freizeitpark Plohn"> Freizeitpark Plohn<br>
+<input type="checkbox" name="park" value="Valleyfair!"> Valleyfair!<br>
+<input type="checkbox" name="park" value="Movie Park Germany"> Movie Park Germany<br>
+<input type="checkbox" name="park" value="Adventureland Iowa"> Adventureland Iowa<br>
+<input type="checkbox" name="park" value="Legendia"> Legendia<br>
+<input type="checkbox" name="park" value="Bobbejaanland"> Bobbejaanland<br>
+<input type="checkbox" name="park" value="TusenFryd"> TusenFryd<br>
+<input type="checkbox" name="park" value="Michigan's Adventure"> Michigan's Adventure<br>
+<input type="checkbox" name="park" value="Nigloland"> Nigloland<br>
+<input type="checkbox" name="park" value="Six Flags Darien Lake"> Six Flags Darien Lake<br>
+<input type="checkbox" name="park" value="Gröna Lund"> Gröna Lund<br>
+<input type="checkbox" name="park" value="Happy Valley Beijing"> Happy Valley Beijing<br>
+<input type="checkbox" name="park" value="SeaWorld San Diego"> SeaWorld San Diego<br>
+<input type="checkbox" name="park" value="Universal Studios Florida"> Universal Studios Florida<br>
+<input type="checkbox" name="park" value="Indiana Beach"> Indiana Beach<br>
+<input type="checkbox" name="park" value="Greenland"> Greenland<br>
+<input type="checkbox" name="park" value="Flamingo Land"> Flamingo Land<br>
+<input type="checkbox" name="park" value="Morey's Piers"> Morey's Piers<br>
+<input type="checkbox" name="park" value="Elitch Gardens"> Elitch Gardens<br>
+<input type="checkbox" name="park" value="Wild Adventures"> Wild Adventures<br>
+<input type="checkbox" name="park" value="Dreamworld"> Dreamworld<br>
+<input type="checkbox" name="park" value="Six Flags America"> Six Flags America<br>
+<input type="checkbox" name="park" value="Cotaland"> Cotaland<br>
+
+</form>
+</div>
+
+<script>
+const months = ['1-Aug', '1-Jul', '1-Jun', '1-May', '1-Apr', '1-Mar', '1-Feb', '1-Jan', '1-Dec', '1-Nov', '1-Oct', '1-Sep', '1-Aug', '1-Jul', '1-Jun', '1-May', '1-Apr', '1-Mar', '1-Feb', '1-Jan', '1-Dec', '15-Nov', '1-Oct', '1-Sep', '1-Aug', '1-Jul', '1-Jun', '1-May', '1-Apr', '1-Mar', '1-Feb', '1-Jan', '1-Dec', '1-Nov', '1-Oct', '1-Sep', '45139'];
+const parkData = [
+{ label: "Cedar Point", data: [48.03, 48.11, 48.53, 48.36, 47.63, 48.03, 47.66, 49.08, 49.22, 49.36, 49.32, 49.5, 48.03, 48.11, 48.53, 48.36, 47.63, 48.03, 47.66, 49.08, 49.22, 48.2, 49.32, 49.5, 48.03, 48.11, 48.53, 48.36, 47.63, 48.03, 47.66, 49.08, 49.22, 49.36, 49.32, 49.5, 49.73], borderColor: "#1E90FF", hidden:true },
+{ label: "Six Flags Magic Mountain", data: [50.67, 50.82, 50.9, 50.92, 50.94, 50.52, 50.85, 50.91, 51.15, 51.35, 51.33, 50.99, 50.67, 50.82, 50.9, 50.92, 50.94, 50.52, 50.85, 50.91, 51.15, 50.71, 51.33, 50.99, 50.67, 50.82, 50.9, 50.92, 50.94, 50.52, 50.85, 50.91, 51.15, 51.35, 51.33, 50.99, 50.35], borderColor: "#FF4500", hidden:true },
+{ label: "Hersheypark", data: [44.65, 44.82, 45.13, 45.2, 45.07, 45.33, 44.65, 46.04, 46.02, 46.16, 46.27, 46.13, 44.65, 44.82, 45.13, 45.2, 45.07, 45.33, 44.65, 46.04, 46.02, 44.2, 46.27, 46.13, 44.65, 44.82, 45.13, 45.2, 45.07, 45.33, 44.65, 46.04, 46.02, 46.16, 46.27, 46.13, 45.88], borderColor: "#FFA500", hidden:true },
+{ label: "Kings Island", data: [36.75, 36.65, 36.56, 36.58, 35.76, 36.61, 36.04, 38.11, 38.27, 38.13, 38.06, 38.32, 36.75, 36.65, 36.56, 36.58, 35.76, 36.61, 36.04, 38.11, 38.27, 37.38, 38.06, 38.32, 36.75, 36.65, 36.56, 36.58, 35.76, 36.61, 36.04, 38.11, 38.27, 38.13, 38.06, 38.32, 38.4], borderColor: "#32CD32", hidden:true },
+{ label: "Canada's Wonderland", data: [27.4, 27.29, 27.29, 26.92, 26.75, 27.64, 27.13, 27.24, 27.42, 27.31, 27.31, 27.45, 27.4, 27.29, 27.29, 26.92, 26.75, 27.64, 27.13, 27.24, 27.42, 27.54, 27.31, 27.45, 27.4, 27.29, 27.29, 26.92, 26.75, 27.64, 27.13, 27.24, 27.42, 27.31, 27.31, 27.45, 27.68], borderColor: "#8A2BE2", hidden:true },
+{ label: "Six Flags Great America", data: [29.53, 29.23, 28.75, 29.09, 28.98, 29.19, 28.91, 29.48, 29.46, 29.7, 29.58, 29.86, 29.53, 29.23, 28.75, 29.09, 28.98, 29.19, 28.91, 29.48, 29.46, 29.55, 29.58, 29.86, 29.53, 29.23, 28.75, 29.09, 28.98, 29.19, 28.91, 29.48, 29.46, 29.7, 29.58, 29.86, 29.84], borderColor: "#FF69B4", hidden:true },
+{ label: "Energylandia", data: [34.07, 34.19, 34.4, 33.11, 33.0, 32.9, 32.77, 33.29, 33.18, 33.21, 33.38, 33.22, 34.07, 34.19, 34.4, 33.11, 33.0, 32.9, 32.77, 33.29, 33.18, 34.21, 33.38, 33.22, 34.07, 34.19, 34.4, 33.11, 33.0, 32.9, 32.77, 33.29, 33.18, 33.21, 33.38, 33.22, 33.3], borderColor: "#00CED1", hidden:true },
+{ label: "Six Flags Great Adventure", data: [38.7, 38.96, 38.88, 39.4, 38.84, 38.91, 38.33, 40.3, 40.29, 40.51, 40.44, 40.43, 38.7, 38.96, 38.88, 39.4, 38.84, 38.91, 38.33, 40.3, 40.29, 31.53, 40.44, 40.43, 38.7, 38.96, 38.88, 39.4, 38.84, 38.91, 38.33, 40.3, 40.29, 40.51, 40.44, 40.43, 40.51], borderColor: "#FFD700", hidden:true },
+{ label: "Six Flags Qiddiya City", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#ADFF2F", hidden:true },
+{ label: "Busch Gardens Williamsburg", data: [33.17, 33.25, 33.29, 32.49, 32.14, 32.03, 32.07, 32.59, 32.61, 32.61, 32.59, 32.89, 33.17, 33.25, 33.29, 32.49, 32.14, 32.03, 32.07, 32.59, 32.61, 32.54, 32.59, 32.89, 33.17, 33.25, 33.29, 32.49, 32.14, 32.03, 32.07, 32.59, 32.61, 32.61, 32.59, 32.89, 32.66], borderColor: "#FF7F50", hidden:true },
+{ label: "Busch Gardens Tampa", data: [32.25, 31.88, 32.02, 32.44, 22.71, 23.12, 22.83, 23.91, 23.68, 23.54, 23.49, 23.57, 32.25, 31.88, 32.02, 32.44, 22.71, 23.12, 22.83, 23.91, 23.68, 31.76, 23.49, 23.57, 32.25, 31.88, 32.02, 32.44, 22.71, 23.12, 22.83, 23.91, 23.68, 23.54, 23.49, 23.57, 23.6], borderColor: "#7FFF00", hidden:true },
+{ label: "Europa Park", data: [29.77, 29.81, 29.78, 29.81, 29.66, 29.15, 29.63, 29.47, 29.73, 29.69, 29.75, 29.77, 29.77, 29.81, 29.78, 29.81, 29.66, 29.15, 29.63, 29.47, 29.73, 29.59, 29.75, 29.77, 29.77, 29.81, 29.78, 29.81, 29.66, 29.15, 29.63, 29.47, 29.73, 29.69, 29.75, 29.77, 29.74], borderColor: "#DC143C", hidden:true },
+{ label: "Kings Dominion", data: [30.79, 30.56, 30.74, 30.85, 30.89, 30.77, 30.79, 31.0, 31.13, 30.91, 30.98, 31.05, 30.79, 30.56, 30.74, 30.85, 30.89, 30.77, 30.79, 31.0, 31.13, 30.57, 30.98, 31.05, 30.79, 30.56, 30.74, 30.85, 30.89, 30.77, 30.79, 31.0, 31.13, 30.91, 30.98, 31.05, 30.96], borderColor: "#00BFFF", hidden:true },
+{ label: "Phantasialand", data: [30.82, 30.98, 30.93, 31.02, 30.4, 30.67, 30.36, 31.33, 31.45, 31.3, 31.15, 30.95, 30.82, 30.98, 30.93, 31.02, 30.4, 30.67, 30.36, 31.33, 31.45, 30.61, 31.15, 30.95, 30.82, 30.98, 30.93, 31.02, 30.4, 30.67, 30.36, 31.33, 31.45, 31.3, 31.15, 30.95, 31.28], borderColor: "#FF1493", hidden:true },
+{ label: "Carowinds", data: [33.73, 33.86, 34.26, 34.34, 33.77, 34.17, 33.58, 34.51, 34.82, 34.88, 34.93, 35.02, 33.73, 33.86, 34.26, 34.34, 33.77, 34.17, 33.58, 34.51, 34.82, 33.0, 34.93, 35.02, 33.73, 33.86, 34.26, 34.34, 33.77, 34.17, 33.58, 34.51, 34.82, 34.88, 34.93, 35.02, 35.11], borderColor: "#20B2AA", hidden:true },
+{ label: "Six Flags Fiesta Texas", data: [28.89, 29.14, 29.04, 29.29, 29.16, 29.08, 29.33, 29.44, 29.65, 29.75, 29.83, 29.5, 28.89, 29.14, 29.04, 29.29, 29.16, 29.08, 29.33, 29.44, 29.65, 28.57, 29.83, 29.5, 28.89, 29.14, 29.04, 29.29, 29.16, 29.08, 29.33, 29.44, 29.65, 29.75, 29.83, 29.5, 29.71], borderColor: "#FF6347", hidden:true },
+{ label: "Dollywood", data: [21.8, 21.86, 22.14, 22.13, 21.95, 22.07, 22.07, 22.54, 22.62, 22.49, 22.37, 22.46, 21.8, 21.86, 22.14, 22.13, 21.95, 22.07, 22.07, 22.54, 22.62, 21.82, 22.37, 22.46, 21.8, 21.86, 22.14, 22.13, 21.95, 22.07, 22.07, 22.54, 22.62, 22.49, 22.37, 22.46, 22.67], borderColor: "#BA55D3", hidden:true },
+{ label: "Walibi Holland", data: [23.11, 23.12, 23.13, 23.07, 23.01, 23.08, 22.9, 22.99, 23.01, 22.99, 23.23, 23.2, 23.11, 23.12, 23.13, 23.07, 23.01, 23.08, 22.9, 22.99, 23.01, 23.33, 23.23, 23.2, 23.11, 23.12, 23.13, 23.07, 23.01, 23.08, 22.9, 22.99, 23.01, 22.99, 23.23, 23.2, 22.72], borderColor: "#40E0D0", hidden:true },
+{ label: "Alton Towers", data: [24.58, 25.2, 25.09, 24.9, 25.15, 17.31, 17.56, 17.87, 17.94, 18.05, 18.0, 18.0, 24.58, 25.2, 25.09, 24.9, 25.15, 17.31, 17.56, 17.87, 17.94, 24.58, 18.0, 18.0, 24.58, 25.2, 25.09, 24.9, 25.15, 17.31, 17.56, 17.87, 17.94, 18.05, 18.0, 18.0, 18.09], borderColor: "#FF8C00", hidden:true },
+{ label: "SeaWorld Orlando", data: [24.12, 24.1, 24.01, 24.15, 24.01, 24.42, 23.27, 23.83, 24.22, 24.09, 23.77, 23.17, 24.12, 24.1, 24.01, 24.15, 24.01, 24.42, 23.27, 23.83, 24.22, 24.49, 23.77, 23.17, 24.12, 24.1, 24.01, 24.15, 24.01, 24.42, 23.27, 23.83, 24.22, 24.09, 23.77, 23.17, 23.21], borderColor: "#7B68EE", hidden:true },
+{ label: "Six Flags Over Georgia", data: [24.2, 24.41, 24.28, 24.15, 24.52, 24.66, 24.09, 24.36, 23.98, 24.21, 24.34, 24.07, 24.2, 24.41, 24.28, 24.15, 24.52, 24.66, 24.09, 24.36, 23.98, 24.13, 24.34, 24.07, 24.2, 24.41, 24.28, 24.15, 24.52, 24.66, 24.09, 24.36, 23.98, 24.21, 24.34, 24.07, 23.96], borderColor: "#1E90FF", hidden:true },
+{ label: "Nagashima Spa Land", data: [22.33, 22.09, 22.12, 22.44, 22.45, 22.6, 22.49, 22.76, 22.8, 22.94, 23.21, 23.06, 22.33, 22.09, 22.12, 22.44, 22.45, 22.6, 22.49, 22.76, 22.8, 20.83, 23.21, 23.06, 22.33, 22.09, 22.12, 22.44, 22.45, 22.6, 22.49, 22.76, 22.8, 22.94, 23.21, 23.06, 23.16], borderColor: "#FF4500", hidden:true },
+{ label: "Silver Dollar City", data: [24.69, 24.6, 24.91, 24.65, 24.61, 24.7, 24.74, 24.88, 24.96, 25.17, 25.15, 25.16, 24.69, 24.6, 24.91, 24.65, 24.61, 24.7, 24.74, 24.88, 24.96, 24.9, 25.15, 25.16, 24.69, 24.6, 24.91, 24.65, 24.61, 24.7, 24.74, 24.88, 24.96, 25.17, 25.15, 25.16, 25.22], borderColor: "#FFA500", hidden:true },
+{ label: "Thorpe Park", data: [23.84, 23.97, 24.28, 24.51, 24.45, 24.24, 24.19, 24.58, 24.56, 24.69, 24.84, 25.1, 23.84, 23.97, 24.28, 24.51, 24.45, 24.24, 24.19, 24.58, 24.56, 23.9, 24.84, 25.1, 23.84, 23.97, 24.28, 24.51, 24.45, 24.24, 24.19, 24.58, 24.56, 24.69, 24.84, 25.1, 25.2], borderColor: "#32CD32", hidden:true },
+{ label: "Parque Warner Madrid", data: [23.57, 23.34, 22.39, 14.88, 14.73, 15.08, 14.55, 15.11, 15.17, 15.24, 15.24, 15.38, 23.57, 23.34, 22.39, 14.88, 14.73, 15.08, 14.55, 15.11, 15.17, 23.37, 15.24, 15.38, 23.57, 23.34, 22.39, 14.88, 14.73, 15.08, 14.55, 15.11, 15.17, 15.24, 15.24, 15.38, 15.39], borderColor: "#8A2BE2", hidden:true },
+{ label: "Universal Epic Universe", data: [23.3, 23.41, 23.82, 23.95, 24.05, 24.1, 24.58, 24.6, 24.54, 24.31, 24.28, 24.25, 23.3, 23.41, 23.82, 23.95, 24.05, 24.1, 24.58, 24.6, 24.54, 23.51, 24.28, 24.25, 23.3, 23.41, 23.82, 23.95, 24.05, 24.1, 24.58, 24.6, 24.54, 24.31, 24.28, 24.25, 23.81], borderColor: "#FF69B4", hidden:true },
+{ label: "Liseberg", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#00CED1", hidden:true },
+{ label: "Knott's Berry Farm", data: [23.14, 23.3, 23.62, 23.75, 23.41, 23.53, 23.7, 24.46, 24.55, 24.61, 24.62, 24.43, 23.14, 23.3, 23.62, 23.75, 23.41, 23.53, 23.7, 24.46, 24.55, 23.53, 24.62, 24.43, 23.14, 23.3, 23.62, 23.75, 23.41, 23.53, 23.7, 24.46, 24.55, 24.61, 24.62, 24.43, 24.34], borderColor: "#FFD700", hidden:true },
+{ label: "Six Flags New England", data: [21.9, 21.85, 21.7, 21.62, 21.35, 21.38, 20.88, 21.52, 21.62, 21.76, 21.9, 21.92, 21.9, 21.85, 21.7, 21.62, 21.35, 21.38, 20.88, 21.52, 21.62, 22.11, 21.9, 21.92, 21.9, 21.85, 21.7, 21.62, 21.35, 21.38, 20.88, 21.52, 21.62, 21.76, 21.9, 21.92, 21.92], borderColor: "#ADFF2F", hidden:true },
+{ label: "Universal Islands of Adventure", data: [22.42, 22.45, 22.42, 22.61, 22.87, 22.89, 23.01, 23.09, 23.12, 23.13, 23.1, 23.36, 22.42, 22.45, 22.42, 22.61, 22.87, 22.89, 23.01, 23.09, 23.12, 22.43, 23.1, 23.36, 22.42, 22.45, 22.42, 22.61, 22.87, 22.89, 23.01, 23.09, 23.12, 23.13, 23.1, 23.36, 23.44], borderColor: "#FF7F50", hidden:true },
+{ label: "Parc Astérix", data: [22.2, 22.2, 22.06, 22.34, 22.08, 22.0, 22.02, 22.58, 22.67, 22.53, 22.59, 22.42, 22.2, 22.2, 22.06, 22.34, 22.08, 22.0, 22.02, 22.58, 22.67, 22.31, 22.59, 22.42, 22.2, 22.2, 22.06, 22.34, 22.08, 22.0, 22.02, 22.58, 22.67, 22.53, 22.59, 22.42, 22.32], borderColor: "#7FFF00", hidden:true },
+{ label: "Ferrari World Abu Dhabi", data: [21.53, 21.32, 21.17, 21.25, 20.87, 21.43, 21.2, 21.77, 21.91, 21.8, 21.94, 22.31, 21.53, 21.32, 21.17, 21.25, 20.87, 21.43, 21.2, 21.77, 21.91, 21.18, 21.94, 22.31, 21.53, 21.32, 21.17, 21.25, 20.87, 21.43, 21.2, 21.77, 21.91, 21.8, 21.94, 22.31, 22.39], borderColor: "#DC143C", hidden:true },
+{ label: "Walibi Belgium", data: [19.89, 19.97, 19.75, 19.71, 19.3, 19.25, 19.21, 17.25, 17.26, 17.09, 17.04, 16.71, 19.89, 19.97, 19.75, 19.71, 19.3, 19.25, 19.21, 17.25, 17.26, 20.18, 17.04, 16.71, 19.89, 19.97, 19.75, 19.71, 19.3, 19.25, 19.21, 17.25, 17.26, 17.09, 17.04, 16.71, 16.67], borderColor: "#00BFFF", hidden:true },
+{ label: "Six Flags Over Texas", data: [16.46, 16.62, 16.53, 16.57, 16.4, 16.32, 16.35, 16.69, 16.69, 16.79, 16.76, 16.81, 16.46, 16.62, 16.53, 16.57, 16.4, 16.32, 16.35, 16.69, 16.69, 16.32, 16.76, 16.81, 16.46, 16.62, 16.53, 16.57, 16.4, 16.32, 16.35, 16.69, 16.69, 16.79, 16.76, 16.81, 16.88], borderColor: "#FF1493", hidden:true },
+{ label: "Fuji-Q Highland", data: [13.95, 13.88, 13.94, 13.92, 14.18, 13.89, 14.2, 14.34, 14.38, 14.2, 14.18, 14.21, 13.95, 13.88, 13.94, 13.92, 14.18, 13.89, 14.2, 14.34, 14.38, 13.79, 14.18, 14.21, 13.95, 13.88, 13.94, 13.92, 14.18, 13.89, 14.2, 14.34, 14.38, 14.2, 14.18, 14.21, 13.98], borderColor: "#20B2AA", hidden:true },
+{ label: "Kennywood", data: [20.0, 19.71, 19.57, 19.75, 18.82, 18.94, 18.85, 18.83, 18.21, 17.19, 17.22, 16.75, 20.0, 19.71, 19.57, 19.75, 18.82, 18.94, 18.85, 18.83, 18.21, 19.9, 17.22, 16.75, 20.0, 19.71, 19.57, 19.75, 18.82, 18.94, 18.85, 18.83, 18.21, 17.19, 17.22, 16.75, 16.68], borderColor: "#FF6347", hidden:true },
+{ label: "Mirabilandia", data: [18.89, 18.86, 18.13, 18.25, 17.78, 17.69, 17.57, 18.36, 18.31, 18.25, 18.34, 18.14, 18.89, 18.86, 18.13, 18.25, 17.78, 17.69, 17.57, 18.36, 18.31, 18.99, 18.34, 18.14, 18.89, 18.86, 18.13, 18.25, 17.78, 17.69, 17.57, 18.36, 18.31, 18.25, 18.34, 18.14, 18.27], borderColor: "#BA55D3", hidden:true },
+{ label: "Holiday World", data: [18.64, 18.91, 18.82, 18.82, 18.24, 18.34, 18.14, 19.01, 18.72, 18.55, 18.77, 18.81, 18.64, 18.91, 18.82, 18.82, 18.24, 18.34, 18.14, 19.01, 18.72, 19.21, 18.77, 18.81, 18.64, 18.91, 18.82, 18.82, 18.24, 18.34, 18.14, 19.01, 18.72, 18.55, 18.77, 18.81, 18.52], borderColor: "#40E0D0", hidden:true },
+{ label: "California's Great America", data: [18.56, 18.49, 18.65, 18.8, 18.27, 18.36, 18.66, 18.96, 18.99, 19.08, 19.19, 18.98, 18.56, 18.49, 18.65, 18.8, 18.27, 18.36, 18.66, 18.96, 18.99, 18.72, 19.19, 18.98, 18.56, 18.49, 18.65, 18.8, 18.27, 18.36, 18.66, 18.96, 18.99, 19.08, 19.19, 18.98, 19.12], borderColor: "#FF8C00", hidden:true },
+{ label: "Kentucky Kingdom", data: [16.43, 16.59, 16.86, 17.01, 17.05, 17.36, 17.06, 17.33, 17.19, 17.36, 17.37, 17.09, 16.43, 16.59, 16.86, 17.01, 17.05, 17.36, 17.06, 17.33, 17.19, 16.34, 17.37, 17.09, 16.43, 16.59, 16.86, 17.01, 17.05, 17.36, 17.06, 17.33, 17.19, 17.36, 17.37, 17.09, 16.98], borderColor: "#7B68EE", hidden:true },
+{ label: "PortAventura Park", data: [17.73, 17.57, 17.86, 17.64, 17.4, 17.68, 17.43, 17.82, 17.97, 17.85, 18.0, 16.57, 17.73, 17.57, 17.86, 17.64, 17.4, 17.68, 17.43, 17.82, 17.97, 17.82, 18.0, 16.57, 17.73, 17.57, 17.86, 17.64, 17.4, 17.68, 17.43, 17.82, 17.97, 17.85, 18.0, 16.57, 16.61], borderColor: "#1E90FF", hidden:true },
+{ label: "Heide Park Resort", data: [17.85, 17.85, 17.9, 17.96, 18.15, 18.04, 18.07, 18.13, 18.21, 18.25, 18.28, 18.22, 17.85, 17.85, 17.9, 17.96, 18.15, 18.04, 18.07, 18.13, 18.21, 17.77, 18.28, 18.22, 17.85, 17.85, 17.9, 17.96, 18.15, 18.04, 18.07, 18.13, 18.21, 18.25, 18.28, 18.22, 18.26], borderColor: "#FF4500", hidden:true },
+{ label: "Plopsaland Belgium", data: [15.32, 15.41, 15.54, 15.6, 15.72, 16.05, 15.89, 15.81, 15.88, 15.75, 15.8, 15.79, 15.32, 15.41, 15.54, 15.6, 15.72, 16.05, 15.89, 15.81, 15.88, 15.49, 15.8, 15.79, 15.32, 15.41, 15.54, 15.6, 15.72, 16.05, 15.89, 15.81, 15.88, 15.75, 15.8, 15.79, 15.99], borderColor: "#FFA500", hidden:true },
+{ label: "Universal Studios Japan", data: [16.65, 16.74, 16.96, 17.0, 16.77, 16.82, 16.79, 16.97, 17.11, 17.18, 17.22, 17.18, 16.65, 16.74, 16.96, 17.0, 16.77, 16.82, 16.79, 16.97, 17.11, 16.57, 17.22, 17.18, 16.65, 16.74, 16.96, 17.0, 16.77, 16.82, 16.79, 16.97, 17.11, 17.18, 17.22, 17.18, 17.08], borderColor: "#32CD32", hidden:true },
+{ label: "Six Flags Discovery Kingdom", data: [13.88, 14.09, 14.17, 14.35, 14.08, 13.62, 13.69, 13.97, 13.74, 13.67, 13.79, 13.91, 13.88, 14.09, 14.17, 14.35, 14.08, 13.62, 13.69, 13.97, 13.74, 13.71, 13.79, 13.91, 13.88, 14.09, 14.17, 14.35, 14.08, 13.62, 13.69, 13.97, 13.74, 13.67, 13.79, 13.91, 13.69], borderColor: "#8A2BE2", hidden:true },
+{ label: "Hansa-Park", data: [16.24, 16.39, 16.89, 16.88, 16.67, 16.71, 16.75, 17.42, 17.3, 17.33, 17.3, 17.32, 16.24, 16.39, 16.89, 16.88, 16.67, 16.71, 16.75, 17.42, 17.3, 16.57, 17.3, 17.32, 16.24, 16.39, 16.89, 16.88, 16.67, 16.71, 16.75, 17.42, 17.3, 17.33, 17.3, 17.32, 17.5], borderColor: "#FF69B4", hidden:true },
+{ label: "Linnanmäki", data: [15.37, 15.53, 15.65, 15.61, 15.52, 15.65, 15.57, 15.63, 15.63, 15.71, 15.78, 15.75, 15.37, 15.53, 15.65, 15.61, 15.52, 15.65, 15.57, 15.63, 15.63, 15.3, 15.78, 15.75, 15.37, 15.53, 15.65, 15.61, 15.52, 15.65, 15.57, 15.63, 15.63, 15.71, 15.78, 15.75, 15.82], borderColor: "#00CED1", hidden:true },
+{ label: "Six Flags Mexico", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FFD700", hidden:true },
+{ label: "Efteling", data: [14.2, 14.21, 14.19, 14.53, 14.01, 14.1, 14.02, 14.63, 14.62, 14.61, 14.72, 14.78, 14.2, 14.21, 14.19, 14.53, 14.01, 14.1, 14.02, 14.63, 14.62, 14.68, 14.72, 14.78, 14.2, 14.21, 14.19, 14.53, 14.01, 14.1, 14.02, 14.63, 14.62, 14.61, 14.72, 14.78, 14.76], borderColor: "#ADFF2F", hidden:true },
+{ label: "Fårup Sommerland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF7F50", hidden:true },
+{ label: "Warner Bros. Movie World", data: [13.25, 13.37, 13.66, 13.38, 13.54, 13.55, 13.63, 13.49, 13.42, 13.23, 13.19, 13.32, 13.25, 13.37, 13.66, 13.38, 13.54, 13.55, 13.63, 13.49, 13.42, 12.96, 13.19, 13.32, 13.25, 13.37, 13.66, 13.38, 13.54, 13.55, 13.63, 13.49, 13.42, 13.23, 13.19, 13.32, 13.15], borderColor: "#7FFF00", hidden:true },
+{ label: "Djurs Sommerland", data: [14.19, 14.34, 14.09, 14.29, 14.33, 14.09, 14.36, 14.69, 14.76, 14.81, 14.82, 14.81, 14.19, 14.34, 14.09, 14.29, 14.33, 14.09, 14.36, 14.69, 14.76, 14.43, 14.82, 14.81, 14.19, 14.34, 14.09, 14.29, 14.33, 14.09, 14.36, 14.69, 14.76, 14.81, 14.82, 14.81, 15.01], borderColor: "#DC143C", hidden:true },
+{ label: "Six Flags St Louis", data: [12.95, 13.12, 13.06, 12.27, 12.36, 12.22, 12.21, 12.59, 12.58, 12.65, 12.79, 12.84, 12.95, 13.12, 13.06, 12.27, 12.36, 12.22, 12.21, 12.59, 12.58, 12.87, 12.79, 12.84, 12.95, 13.12, 13.06, 12.27, 12.36, 12.22, 12.21, 12.59, 12.58, 12.65, 12.79, 12.84, 13.08], borderColor: "#00BFFF", hidden:true },
+{ label: "Dorney Park", data: [13.01, 12.81, 12.11, 12.36, 12.69, 13.15, 13.09, 12.8, 12.74, 12.82, 12.79, 12.92, 13.01, 12.81, 12.11, 12.36, 12.69, 13.15, 13.09, 12.8, 12.74, 13.08, 12.79, 12.92, 13.01, 12.81, 12.11, 12.36, 12.69, 13.15, 13.09, 12.8, 12.74, 12.82, 12.79, 12.92, 13.15], borderColor: "#FF1493", hidden:true },
+{ label: "Knoebels", data: [12.24, 12.25, 13.78, 12.28, 12.45, 12.37, 12.53, 12.47, 12.72, 12.65, 12.57, 12.79, 12.24, 12.25, 13.78, 12.28, 12.45, 12.37, 12.53, 12.47, 12.72, 13.47, 12.57, 12.79, 12.24, 12.25, 13.78, 12.28, 12.45, 12.37, 12.53, 12.47, 12.72, 12.65, 12.57, 12.79, 12.66], borderColor: "#20B2AA", hidden:true },
+{ label: "Pleasure Beach Resort", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF6347", hidden:true },
+{ label: "Lagoon", data: [13.61, 13.6, 13.57, 13.68, 13.62, 13.6, 13.7, 13.7, 13.88, 13.83, 13.9, 13.87, 13.61, 13.6, 13.57, 13.68, 13.62, 13.6, 13.7, 13.7, 13.88, 13.53, 13.9, 13.87, 13.61, 13.6, 13.57, 13.68, 13.62, 13.6, 13.7, 13.7, 13.88, 13.83, 13.9, 13.87, 13.81], borderColor: "#BA55D3", hidden:true },
+{ label: "Walibi Rhône-Alpes", data: [12.4, 12.22, 12.15, 12.58, 12.54, 12.43, 12.62, 10.83, 10.69, 10.9, 10.89, 10.99, 12.4, 12.22, 12.15, 12.58, 12.54, 12.43, 12.62, 10.83, 10.69, 12.39, 10.89, 10.99, 12.4, 12.22, 12.15, 12.58, 12.54, 12.43, 12.62, 10.83, 10.69, 10.9, 10.89, 10.99, 10.98], borderColor: "#40E0D0", hidden:true },
+{ label: "Worlds of Fun", data: [12.23, 12.23, 11.72, 11.64, 11.86, 11.51, 11.97, 11.93, 11.92, 12.13, 12.1, 12.32, 12.23, 12.23, 11.72, 11.64, 11.86, 11.51, 11.97, 11.93, 11.92, 11.97, 12.1, 12.32, 12.23, 12.23, 11.72, 11.64, 11.86, 11.51, 11.97, 11.93, 11.92, 12.13, 12.1, 12.32, 12.37], borderColor: "#FF8C00", hidden:true },
+{ label: "Erlebnispark Tripsdrill", data: [13.38, 13.67, 13.65, 13.81, 13.65, 14.04, 13.66, 14.0, 13.95, 13.94, 13.88, 13.88, 13.38, 13.67, 13.65, 13.81, 13.65, 14.04, 13.66, 14.0, 13.95, 13.05, 13.88, 13.88, 13.38, 13.67, 13.65, 13.81, 13.65, 14.04, 13.66, 14.0, 13.95, 13.94, 13.88, 13.88, 13.97], borderColor: "#7B68EE", hidden:true },
+{ label: "Nanchang Sunac Land", data: [13.23, 13.43, 13.85, 13.38, 14.82, 13.65, 13.62, 12.35, 12.42, 12.41, 12.57, 12.59, 13.23, 13.43, 13.85, 13.38, 14.82, 13.65, 13.62, 12.35, 12.42, 13.85, 12.57, 12.59, 13.23, 13.43, 13.85, 13.38, 14.82, 13.65, 13.62, 12.35, 12.42, 12.41, 12.57, 12.59, 12.86], borderColor: "#1E90FF", hidden:true },
+{ label: "PowerPark", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF4500", hidden:true },
+{ label: "SeaWorld San Antonio", data: [10.67, 10.58, 10.74, 10.62, 10.42, 10.81, 10.61, 10.57, 10.57, 10.79, 10.89, 10.73, 10.67, 10.58, 10.74, 10.62, 10.42, 10.81, 10.61, 10.57, 10.57, 10.63, 10.89, 10.73, 10.67, 10.58, 10.74, 10.62, 10.42, 10.81, 10.61, 10.57, 10.57, 10.79, 10.89, 10.73, 10.83], borderColor: "#FFA500", hidden:true },
+{ label: "Plopsaland Deutschland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#32CD32", hidden:true },
+{ label: "Silverwood Theme Park", data: [11.05, 10.7, 8.92, 9.23, 9.6, 9.9, 9.68, 10.1, 10.04, 9.92, 10.22, 10.44, 11.05, 10.7, 8.92, 9.23, 9.6, 9.9, 9.68, 10.1, 10.04, 10.99, 10.22, 10.44, 11.05, 10.7, 8.92, 9.23, 9.6, 9.9, 9.68, 10.1, 10.04, 9.92, 10.22, 10.44, 9.87], borderColor: "#8A2BE2", hidden:true },
+{ label: "Motiongate", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF69B4", hidden:true },
+{ label: "Emerald Park", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#00CED1", hidden:true },
+{ label: "Wiener Prater", data: [10.23, 10.41, 10.08, 10.01, 10.15, 10.12, 10.09, 10.27, 10.33, 10.39, 10.28, 9.81, 10.23, 10.41, 10.08, 10.01, 10.15, 10.12, 10.09, 10.27, 10.33, 9.83, 10.28, 9.81, 10.23, 10.41, 10.08, 10.01, 10.15, 10.12, 10.09, 10.27, 10.33, 10.39, 10.28, 9.81, 10.07], borderColor: "#FFD700", hidden:true },
+{ label: "La Ronde", data: [10.43, 10.36, 10.61, 10.59, 10.63, 10.32, 10.6, 10.82, 10.64, 10.63, 10.65, 10.49, 10.43, 10.36, 10.61, 10.59, 10.63, 10.32, 10.6, 10.82, 10.64, 10.17, 10.65, 10.49, 10.43, 10.36, 10.61, 10.59, 10.63, 10.32, 10.6, 10.82, 10.64, 10.63, 10.65, 10.49, 10.61], borderColor: "#ADFF2F", hidden:true },
+{ label: "Gardaland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF7F50", hidden:true },
+{ label: "Fun Spot America Atlanta", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#7FFF00", hidden:true },
+{ label: "Kolmården", data: [9.73, 9.98, 9.47, 9.56, 9.67, 9.52, 9.7, 9.81, 9.6, 9.57, 9.46, 9.31, 9.73, 9.98, 9.47, 9.56, 9.67, 9.52, 9.7, 9.81, 9.6, 9.12, 9.46, 9.31, 9.73, 9.98, 9.47, 9.56, 9.67, 9.52, 9.7, 9.81, 9.6, 9.57, 9.46, 9.31, 9.31], borderColor: "#DC143C", hidden:true },
+{ label: "Everland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#00BFFF", hidden:true },
+{ label: "Freizeitpark Plohn", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF1493", hidden:true },
+{ label: "Valleyfair!", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#20B2AA", hidden:true },
+{ label: "Movie Park Germany", data: [8.23, 8.19, 7.7, 7.65, 7.59, 7.79, 7.65, 7.66, 7.55, 7.51, 7.47, 7.48, 8.23, 8.19, 7.7, 7.65, 7.59, 7.79, 7.65, 7.66, 7.55, 8.09, 7.47, 7.48, 8.23, 8.19, 7.7, 7.65, 7.59, 7.79, 7.65, 7.66, 7.55, 7.51, 7.47, 7.48, 7.95], borderColor: "#FF6347", hidden:true },
+{ label: "Adventureland Iowa", data: [8.7, 8.75, 8.84, 8.93, 9.05, 9.27, 9.22, 9.1, 9.06, 9.21, 9.2, 9.13, 8.7, 8.75, 8.84, 8.93, 9.05, 9.27, 9.22, 9.1, 9.06, 8.67, 9.2, 9.13, 8.7, 8.75, 8.84, 8.93, 9.05, 9.27, 9.22, 9.1, 9.06, 9.21, 9.2, 9.13, 9.13], borderColor: "#BA55D3", hidden:true },
+{ label: "Legendia", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#40E0D0", hidden:true },
+{ label: "Bobbejaanland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF8C00", hidden:true },
+{ label: "TusenFryd", data: [9.16, 9.47, 9.61, 9.67, 9.39, 9.12, 9.11, 9.65, 9.6, 9.75, 9.87, 9.82, 9.16, 9.47, 9.61, 9.67, 9.39, 9.12, 9.11, 9.65, 9.6, 8.97, 9.87, 9.82, 9.16, 9.47, 9.61, 9.67, 9.39, 9.12, 9.11, 9.65, 9.6, 9.75, 9.87, 9.82, 9.29], borderColor: "#7B68EE", hidden:true },
+{ label: "Michigan's Adventure", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#1E90FF", hidden:true },
+{ label: "Nigloland", data: [7.65, 7.58, 7.75, 8.05, 7.99, 8.07, 7.94, 8.06, 8.74, 8.79, 8.74, 8.83, 7.65, 7.58, 7.75, 8.05, 7.99, 8.07, 7.94, 8.06, 8.74, 7.71, 8.74, 8.83, 7.65, 7.58, 7.75, 8.05, 7.99, 8.07, 7.94, 8.06, 8.74, 8.79, 8.74, 8.83, 9.01], borderColor: "#FF4500", hidden:true },
+{ label: "Six Flags Darien Lake", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FFA500", hidden:true },
+{ label: "Gröna Lund", data: [7.08, 7.15, 7.3, 7.21, 7.12, 7.54, 7.12, 7.33, 7.39, 7.42, 7.56, 7.43, 7.08, 7.15, 7.3, 7.21, 7.12, 7.54, 7.12, 7.33, 7.39, 7.04, 7.56, 7.43, 7.08, 7.15, 7.3, 7.21, 7.12, 7.54, 7.12, 7.33, 7.39, 7.42, 7.56, 7.43, 7.36], borderColor: "#32CD32", hidden:true },
+{ label: "Happy Valley Beijing", data: [6.88, 7.06, 6.4, 6.46, 6.57, 6.51, 6.55, 6.67, 6.7, 6.76, 11.36, 11.48, 6.88, 7.06, 6.4, 6.46, 6.57, 6.51, 6.55, 6.67, 6.7, 6.7, 11.36, 11.48, 6.88, 7.06, 6.4, 6.46, 6.57, 6.51, 6.55, 6.67, 6.7, 6.76, 11.36, 11.48, 11.68], borderColor: "#8A2BE2", hidden:true },
+{ label: "SeaWorld San Diego", data: [8.61, 8.75, 8.99, 9.0, 8.85, 8.75, 8.8, 8.98, 9.1, 9.21, 9.19, 9.07, 8.61, 8.75, 8.99, 9.0, 8.85, 8.75, 8.8, 8.98, 9.1, 8.53, 9.19, 9.07, 8.61, 8.75, 8.99, 9.0, 8.85, 8.75, 8.8, 8.98, 9.1, 9.21, 9.19, 9.07, 9.03], borderColor: "#FF69B4", hidden:true },
+{ label: "Universal Studios Florida", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#00CED1", hidden:true },
+{ label: "Indiana Beach", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FFD700", hidden:true },
+{ label: "Greenland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#ADFF2F", hidden:true },
+{ label: "Flamingo Land", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF7F50", hidden:true },
+{ label: "Morey's Piers", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#7FFF00", hidden:true },
+{ label: "Elitch Gardens", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#DC143C", hidden:true },
+{ label: "Wild Adventures", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#00BFFF", hidden:true },
+{ label: "Dreamworld", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF1493", hidden:true },
+{ label: "Six Flags America", data: [9.68, 9.71, 9.99, 9.86, 9.6, 9.51, 9.7, 10.12, 10.07, 10.1, 10.19, 10.22, 9.68, 9.71, 9.99, 9.86, 9.6, 9.51, 9.7, 10.12, 10.07, 9.68, 10.19, 10.22, 9.68, 9.71, 9.99, 9.86, 9.6, 9.51, 9.7, 10.12, 10.07, 10.1, 10.19, 10.22, 10.18], borderColor: "#20B2AA", hidden:true },
+{ label: "Cotaland", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], borderColor: "#FF6347", hidden:true },
+
+];
+
+// Create Chart
+const ctx = document.getElementById('historicalChart').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: months,
+        datasets: parkData
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right',
+                onClick: null,
+                labels: {
+                    color: '#FFFFFF',
+                    generateLabels: function(chart) {
+                        return chart.data.datasets
+                            .filter(d => !d.hidden)   // only datasets that are visible
+                            .map(d => ({
+                                text: d.label,
+                                fillStyle: d.borderColor,
+                                hidden: d.hidden,
+                                datasetIndex: chart.data.datasets.indexOf(d),
+                                fontColor: '#FFFFFF'
+                            }));
+                    }
+                }
+            }
+        },
+        scales: {
+            y: { title: { display: true, text: 'Score' } },
+            x: { title: { display: true, text: 'Month' }, reverse: true }
+        }
+    }
+});
+
+// Handle checkbox selection
+document.getElementById('parkForm').addEventListener('change', function() {
+    const checked = Array.from(document.querySelectorAll('input[name="park"]:checked')).map(i=>i.value);
+    parkData.forEach(d => d.hidden = !checked.includes(d.label));
+    chart.update();
+});
+
+function clearSelection(){
+    document.querySelectorAll('input[name="park"]').forEach(cb=>cb.checked=false);
+    parkData.forEach(d=>d.hidden=true);
+    chart.update();
+}
+
+function selectTop20(){
+    clearSelection();
+    document.querySelectorAll('input[name="park"]').forEach((cb,i)=>{
+        if(i<20){ cb.checked=true; parkData[i].hidden=false; }
+    });
+    chart.update();
+}
+</script>
+</body>
+</html>
